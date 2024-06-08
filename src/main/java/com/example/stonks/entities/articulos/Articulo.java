@@ -3,6 +3,7 @@ package com.example.stonks.entities.articulos;
 import com.example.stonks.entities.Base;
 import com.example.stonks.entities.orden_de_compra.Proveedor;
 import com.example.stonks.entities.orden_de_compra.ProveedorArticulo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.*;
@@ -26,6 +27,7 @@ public class Articulo extends Base {
 
     @ManyToOne
     @JoinColumn(name = "id_proveedor_predeterminado")
+    @JsonIgnoreProperties("proveedorArticulos")
     private Proveedor predeterminado;
 
 
