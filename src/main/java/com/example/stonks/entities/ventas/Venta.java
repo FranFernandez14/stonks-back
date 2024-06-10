@@ -1,17 +1,22 @@
 package com.example.stonks.entities.ventas;
 
 import com.example.stonks.entities.Base;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
+
 import java.util.*;
 
 @Data
 @Entity
+@Table(name = "Venta")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Venta extends Base {
 
+    @Column(name = "nro_venta")
     private int nroVenta;
 
     @ManyToOne
@@ -20,4 +25,8 @@ public class Venta extends Base {
 
     @OneToMany(mappedBy = "venta")
     private List<LineaVenta> lineasVenta = new ArrayList<>();
+
+    @Column(name = "fecha_venta")
+    @Temporal(TemporalType.DATE)
+    private Date fechaVenta;
 }

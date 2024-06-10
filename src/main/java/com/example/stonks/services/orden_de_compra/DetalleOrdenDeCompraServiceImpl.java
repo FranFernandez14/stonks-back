@@ -28,7 +28,7 @@ public class DetalleOrdenDeCompraServiceImpl extends BaseServiceImpl<DetalleOrde
 
     @Autowired
     private ProveedorArticuloService proveedorArticuloService;
-
+/*
     public void generarOrdenDeCompra(Long idArticulo) throws Exception {
 
         Articulo articulo = articuloService.findById(idArticulo);
@@ -56,5 +56,5 @@ public class DetalleOrdenDeCompraServiceImpl extends BaseServiceImpl<DetalleOrde
             detalleOrdenDeCompraRepository.save(detalleOrdenDeCompra);
         }
 
-    }
+    }*/
 }
