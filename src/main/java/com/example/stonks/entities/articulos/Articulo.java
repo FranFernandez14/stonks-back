@@ -10,6 +10,7 @@ import java.util.*;
 
 @Data
 @Entity
+@Table(name = "articulo")
 public class Articulo extends Base {
 
     private String cod;

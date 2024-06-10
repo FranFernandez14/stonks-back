@@ -6,21 +6,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Data;
-
-import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "demanda")
-public class Demanda extends Base {
-
-    private int cantidad;
-    private int mes;
-    private int año;
-    private Date fecha;
+@Builder
+@Table(name = "prediccion")
+public class Prediccion extends Base {
 
     @ManyToOne
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
+
 }
