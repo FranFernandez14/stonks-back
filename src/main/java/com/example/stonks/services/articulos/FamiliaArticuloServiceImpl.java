@@ -1,8 +1,9 @@
-package com.example.stonks.services;
+package com.example.stonks.services.articulos;
 
 import com.example.stonks.entities.articulos.FamiliaArticulo;
 import com.example.stonks.repositories.BaseRepository;
-import com.example.stonks.repositories.FamiliaArticuloRepository;
+import com.example.stonks.repositories.articulos.FamiliaArticuloRepository;
+import com.example.stonks.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

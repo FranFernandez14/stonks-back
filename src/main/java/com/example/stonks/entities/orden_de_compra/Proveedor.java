@@ -17,6 +17,7 @@ public class Proveedor extends Base {
     private int costoMinimo;
     private int diasDemoraEntrega;
     private int cantArticulosMaximos;
+    private double costoEnvio;
 
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProveedorArticulo> proveedorArticulos;

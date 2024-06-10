@@ -18,6 +18,8 @@ public class DetalleOrdenDeCompra extends Base {
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
     private int cantidad;
+    private double valorArticulo;
+    private double totalDetalle;
 
     @ManyToOne
     @JoinColumn(name = "id_orden_de_compra")
