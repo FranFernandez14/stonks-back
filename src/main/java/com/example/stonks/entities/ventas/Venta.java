@@ -23,7 +23,7 @@ public class Venta extends Base {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
     private List<LineaVenta> lineasVenta = new ArrayList<>();
 
     @Column(name = "fecha_venta")
