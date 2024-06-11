@@ -21,7 +21,11 @@ public class DetalleOrdenDeCompra extends Base {
     private double valorArticulo;
     private double totalDetalle;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "id_orden_de_compra")
-    private OrdenDeCompra ordenDeCompra;
+    private OrdenDeCompra ordenDeCompra;*/
+
+
+
+
 }

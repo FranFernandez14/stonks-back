@@ -9,4 +9,7 @@ public interface OrdenDeCompraService extends BaseService<OrdenDeCompra, Long> {
 
 
     public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado);
+
+
+
 }

@@ -4,7 +4,7 @@ import com.example.stonks.entities.Base;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.sql.Date;
+import java.util.*;
 
 @Data
 @Entity
@@ -22,5 +22,10 @@ public class OrdenDeCompra extends Base {
     @ManyToOne
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
+
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "id_orden_de_compra")
+    List<DetalleOrdenDeCompra> detalles = new ArrayList<DetalleOrdenDeCompra>();
 
 }
