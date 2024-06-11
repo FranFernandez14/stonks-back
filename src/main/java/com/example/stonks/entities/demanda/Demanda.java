@@ -5,10 +5,12 @@ import com.example.stonks.entities.articulos.Articulo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Entity
+@Builder
 public class Demanda extends Base {
 
     private int cantidad;
