@@ -8,5 +8,9 @@
         <naming-strategy-map />
       </configuration>
     </facet>
+  <component name="AdditionalModuleElements">
+    <content url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../build/generated/sources/annotationProcessor/java/main" isTestSource="false" generated="true" />
+    </content>
   </component>
 </module>
