@@ -1,6 +1,6 @@
 package com.example.stonks.controllers;
 
-import com.example.stonks.entities.demanda.DTOIngresoParametrosDemanda;
+import com.example.stonks.services.DTOIngresoParametrosDemanda;
 import com.example.stonks.entities.demanda.Prediccion;
 import com.example.stonks.services.PrediccionServiceImpl;
 import org.springframework.http.HttpStatus;

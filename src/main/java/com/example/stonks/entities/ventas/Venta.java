@@ -1,10 +1,7 @@
 package com.example.stonks.entities.ventas;
 
 import com.example.stonks.entities.Base;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 import java.util.*;
 
@@ -20,4 +17,7 @@ public class Venta extends Base {
 
     @OneToMany(mappedBy = "venta")
     private List<LineaVenta> lineasVenta = new ArrayList<>();
+
+    @Column(name = "fecha_venta")
+    private Date fechaVenta;
 }

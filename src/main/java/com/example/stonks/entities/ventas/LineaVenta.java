@@ -2,14 +2,12 @@ package com.example.stonks.entities.ventas;
 
 import com.example.stonks.entities.Base;
 import com.example.stonks.entities.articulos.Articulo;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
+@Table(name = "linea_venta")
 public class LineaVenta extends Base {
 
     @ManyToOne

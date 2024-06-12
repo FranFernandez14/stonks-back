@@ -1,4 +1,4 @@
-package com.example.stonks.entities.demanda;
+package com.example.stonks.services;
 
 import com.example.stonks.entities.articulos.Articulo;
 import lombok.Data;

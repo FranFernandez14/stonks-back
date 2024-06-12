@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface PrediccionRepository extends BaseRepository<Prediccion, Long> {
@@ -22,5 +23,5 @@ public interface PrediccionRepository extends BaseRepository<Prediccion, Long> {
             nativeQuery = true
     )
     public Collection<Demanda> getDemandas(@Param(value = "periodos") int periodos,
-                                           @Param(value = "articulo") Long articulo);
+                                     @Param(value = "articulo") Long articulo);
 }

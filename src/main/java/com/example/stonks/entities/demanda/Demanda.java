@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -13,9 +14,10 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "demanda")
+@Builder
 public class Demanda extends Base {
 
-    private int cantidad;
+    private float cantidad;
     private int mes;
     private int año;
     private Date fecha;
