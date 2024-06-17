@@ -1,9 +1,7 @@
 package com.example.stonks.entities.articulos;
 
 import com.example.stonks.entities.Base;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.sql.Date;
@@ -25,6 +23,7 @@ public class FamiliaArticulo extends Base {
     @Column(name = "fechaBaja")
     private Date fechaBaja;
 
+    @Enumerated(EnumType.STRING)
     private ModeloInventario modeloInventario;
 
 }
