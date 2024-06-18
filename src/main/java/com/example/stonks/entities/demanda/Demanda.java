@@ -20,7 +20,6 @@ public class Demanda extends Base {
     private float cantidad;
     private int mes;
     private int año;
-    private Date fecha;
 
     @ManyToOne
     @JoinColumn(name = "id_articulo")

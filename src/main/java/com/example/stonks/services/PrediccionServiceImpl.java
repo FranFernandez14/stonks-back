@@ -27,28 +27,27 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
 
     @Override
     public Prediccion predecirDemanda(DTOIngresoParametrosDemanda dtoIngresoParametrosDemanda) throws Exception{
+        try {
+            if (dtoIngresoParametrosDemanda.getAlfa() < 0 ||
+                    dtoIngresoParametrosDemanda.getAlfa() > 1)
+                throw new Exception("Alfa debe estar entre 0 y 1");
+            
+            if (dtoIngresoParametrosDemanda.getCiclos() < 3 ) throw new Exception("La cantidad de ciclos debe ser al menos 3");
 
-        if (dtoIngresoParametrosDemanda.getCantidadPeriodosAUtilizar()
-                >
-            dtoIngresoParametrosDemanda.getPonderacion().size()) {
-            throw new Exception();
-        }
+            List<EstrategiaPredecirDemanda> listaEstrategias = FactoriaEstrategiaPredecirDemanda.getInstance().obtenerEstrategias();
 
-        Collection<Demanda> listaDemandas = this.prediccionRepository.getDemandas(
-                dtoIngresoParametrosDemanda.getCantidadPeriodosAUtilizar(),
-                dtoIngresoParametrosDemanda.getArticulo().getId());
-
-        List<EstrategiaPredecirDemanda> listaEstrategias = FactoriaEstrategiaPredecirDemanda.getInstance().obtenerEstrategias();
-
-        for (EstrategiaPredecirDemanda estrategia : listaEstrategias) {
+            for (EstrategiaPredecirDemanda estrategia : listaEstrategias) {
             /* TODO
             2- Agarrar la mejor de las predicciones segun la que tenga menor error y retornarla
             5- Luego de retornar la supuesta mejor prediccion, hay que generar una orden de compra
             (si es que no existe una pendiente)
             */
+            }
+
+            return null;
+
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
-
-        return null;
-
     }
 }

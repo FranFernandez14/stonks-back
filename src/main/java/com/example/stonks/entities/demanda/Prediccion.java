@@ -19,4 +19,10 @@ public class Prediccion extends Base {
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 
+    private float cantidadPredecida;
+
+    private int mes;
+
+    private int año;
+
 }

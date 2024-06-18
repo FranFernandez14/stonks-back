@@ -1,61 +1,71 @@
 package com.example.stonks.services.estrategiaPredecirDemanda;
 
+import com.example.stonks.repositories.PrediccionRepository;
 import com.example.stonks.services.DTOIngresoParametrosDemanda;
 import com.example.stonks.entities.demanda.Demanda;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import static java.lang.Math.abs;
 
 public class EstrategiaPromedioMovil implements EstrategiaPredecirDemanda{
 
+    @Autowired
+    private PrediccionRepository prediccionRepository;
+
     @Override
-    public DTOListaPrediccion predecirDemanda(DTOIngresoParametrosDemanda dtoIngresoParametrosDemanda,
-                                              Collection<Demanda> listaDemandasHistoricas) {
+    public DTOListaPrediccion predecirDemanda(DTOIngresoParametrosDemanda dtoIngresoParametrosDemanda) throws Exception {
+        try {
 
-        List <Demanda> listaDemandasHistoricasArray = new ArrayList<>(listaDemandasHistoricas);
+            int periodosAPredecir = dtoIngresoParametrosDemanda.getCantidadPeriodosAPredecir();
 
-        int periodosAPredecir = dtoIngresoParametrosDemanda.getCantidadPeriodosAPredecir();
+            int cantTerminosPonderacion = dtoIngresoParametrosDemanda.getPonderacion().size();
 
-        int periodosAUsarCalculo = dtoIngresoParametrosDemanda.getPonderacion().size();
+            int periodosAUtilizar = dtoIngresoParametrosDemanda.getCantidadPeriodosAUtilizar();
 
-        int cantidadIteraciones = dtoIngresoParametrosDemanda.getCantidadPeriodosAUtilizar()
-                                    - periodosAUsarCalculo + periodosAPredecir;
+            int cantidadIteraciones = periodosAUtilizar + periodosAPredecir;
 
-        DTOListaPrediccion resultadoPrediccion = new DTOListaPrediccion();
+            List<Float> ponderaciones = dtoIngresoParametrosDemanda.getPonderacion();
 
-        for(int i = 0; i < cantidadIteraciones; i++) {
+            DTOListaPrediccion resultadoPrediccion = new DTOListaPrediccion();
 
-            List<Demanda> demandasParaCalculo = listaDemandasHistoricasArray.subList(
-                                                                                    i, //inicio
-                                                                                    i + periodosAUsarCalculo /*fin*/);
-            float sumatoria = 0;
+            //Obtenemos las demandas historicas
+            ArrayList<Demanda> listaDemandasCalculo = this.prediccionRepository.getDemandasAnteriores(
+                    periodosAPredecir + cantTerminosPonderacion,
+                    dtoIngresoParametrosDemanda.getArticulo().getId());
 
-            for (int j = 0; j < periodosAUsarCalculo; j++) {
-                sumatoria += (demandasParaCalculo.get(j).getCantidad()
-                            * dtoIngresoParametrosDemanda.getPonderacion().get(j));
+            //POR CADA prediccion
+            for (int i = 0; i < cantidadIteraciones; i++) {
+
+                float sumatoria = 0;
+
+                //Agarramos las N demandas previas para calcular la predicción
+                for (int j = i; j < cantTerminosPonderacion; j++) {
+                    sumatoria += (listaDemandasCalculo.get(j).getCantidad()
+                                  * ponderaciones.get(j));
+                }
+                float promedioMovilPonderado = sumatoria / cantTerminosPonderacion;
+                float errorCometido = abs(promedioMovilPonderado -
+                                          listaDemandasCalculo.get(i + cantTerminosPonderacion).getCantidad());
+
+                //Si es una prediccion sin datos historicos a contrastar
+                if (i >= periodosAUtilizar) {
+                    errorCometido = 0;
+                /* Añadimos la prediccion a la lista para incluirla en el calculo de la proxima iteracion */
+                    Demanda demandaPredicha = Demanda.builder()
+                                            .cantidad(promedioMovilPonderado)
+                                            .build();
+                    listaDemandasCalculo.add(demandaPredicha);
+                }
+                resultadoPrediccion.add(new DTOPrediccion(promedioMovilPonderado, errorCometido));
             }
 
-            float promedioMovilPonderado = sumatoria / periodosAUsarCalculo;
-            float errorCometido = abs(promedioMovilPonderado -
-                    listaDemandasHistoricasArray.get(i + periodosAUsarCalculo).getCantidad());
-            
-            //Si es una prediccion sin datos historicos a contrastar
-            if (i >= cantidadIteraciones - periodosAPredecir) {
-                errorCometido = 0;
-                //Añadimos la prediccion a la lista para incluirla en el calculo de
-                //la proxima iteracion
-                Demanda demandaPredicha = Demanda.builder()
-                                          .cantidad(promedioMovilPonderado)
-                                          .build();
-                listaDemandasHistoricasArray.add(demandaPredicha);
-            }
+            return resultadoPrediccion;
 
-            resultadoPrediccion.add(new DTOPrediccion(promedioMovilPonderado, errorCometido));
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
         }
-
-        return resultadoPrediccion;
     }
 }
