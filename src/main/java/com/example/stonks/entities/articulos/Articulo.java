@@ -16,7 +16,7 @@ import java.util.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class Articulo extends Base {
 
     @Column(name = "cod")

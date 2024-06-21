@@ -3,6 +3,7 @@ package com.example.stonks.entities.ventas;
 import com.example.stonks.entities.Base;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
@@ -14,6 +15,7 @@ import java.util.*;
 @Table(name = "Venta")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Venta extends Base {
 
     @Column(name = "nro_venta")
@@ -23,7 +25,7 @@ public class Venta extends Base {
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<LineaVenta> lineasVenta = new ArrayList<>();
 
     @Column(name = "fecha_venta")

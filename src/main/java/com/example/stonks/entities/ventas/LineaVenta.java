@@ -4,6 +4,7 @@ import com.example.stonks.entities.Base;
 import com.example.stonks.entities.articulos.Articulo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Linea_venta")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class LineaVenta extends Base {
 
     @ManyToOne
@@ -29,9 +31,4 @@ public class LineaVenta extends Base {
 
     @Column(name = "cantidad")
     private int cantidad;
-
-    @ManyToOne
-    @JoinColumn(name = "id_venta")
-    private Venta venta;
-
 }

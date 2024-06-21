@@ -3,6 +3,7 @@ package com.example.stonks.entities.orden_de_compra;
 import com.example.stonks.entities.Base;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import java.util.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Proveedor extends Base {
 
     @Column(name = "cod_proveedor")
