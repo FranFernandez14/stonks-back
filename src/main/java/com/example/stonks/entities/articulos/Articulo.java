@@ -1,6 +1,7 @@
 package com.example.stonks.entities.articulos;
 
 import com.example.stonks.entities.Base;
+import com.example.stonks.entities.demanda.Demanda;
 import com.example.stonks.entities.orden_de_compra.Proveedor;
 import com.example.stonks.entities.orden_de_compra.ProveedorArticulo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -35,6 +36,10 @@ public class Articulo extends Base {
     private int precioVenta;
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
+    @Column(name = "cp")
+    private int cp;
+    @Column(name = "ca")
+    private int ca;
 
     @ManyToOne
     @JoinColumn(name = "id_familia_articulo")
@@ -45,5 +50,7 @@ public class Articulo extends Base {
     @JsonIgnoreProperties("proveedorArticulos")
     private Proveedor predeterminado;
 
+    @OneToMany(mappedBy = "articulo")
+    private List<Demanda> demandas;
 
-}
+    }
