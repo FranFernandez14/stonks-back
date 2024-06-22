@@ -12,10 +12,6 @@ import java.io.Serializable;
 public class ProveedorArticulo extends Base {
 
     @ManyToOne
-    @JoinColumn(name = "proveedor_id")
-    private Proveedor proveedor;
-
-    @ManyToOne
     @JoinColumn(name = "articulo_id")
     private Articulo articulo;
 

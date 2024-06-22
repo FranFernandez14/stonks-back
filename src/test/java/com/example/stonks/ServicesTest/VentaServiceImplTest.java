@@ -1,5 +1,4 @@
 package com.example.stonks.ServicesTest;
-
 import com.example.stonks.StonksApplication;
 import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.orden_de_compra.Proveedor;
@@ -13,15 +12,12 @@ import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -104,7 +100,6 @@ public class VentaServiceImplTest {
                 .articulo(articulo1)
                 .precioUnitario(articulo1.getPrecioVenta())
                 .cantidad(20)
-                .subtotal(20*articulo1.getPrecioVenta())
                 .build();
 
         LineaVenta lineaVenta2 =LineaVenta.builder()
@@ -112,7 +107,6 @@ public class VentaServiceImplTest {
                 .articulo(articulo2)
                 .precioUnitario(articulo2.getPrecioVenta())
                 .cantidad(50)
-                .subtotal(50*articulo2.getPrecioVenta())
                 .build();
 
         lineasVenta.add(lineaVenta1);

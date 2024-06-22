@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LineaVenta extends Base {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 
@@ -25,9 +25,6 @@ public class LineaVenta extends Base {
 
     @Column(name = "precio_unitario")
     private double precioUnitario;
-
-    @Column(name = "subtotal")
-    private double subtotal;
 
     @Column(name = "cantidad")
     private int cantidad;

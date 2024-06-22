@@ -13,8 +13,10 @@ import java.util.Optional;
 
 @Repository
 public interface VentaRepository extends BaseRepository<Venta, Long> {
-    @Query("SELECT d FROM Demanda d WHERE"
+    @Query(value = "SELECT d FROM Demanda as d WHERE"
     +" d.mes = month(CURDATE()) AND d.año = year(CURDATE())"
-    +" AND d.articulo = :idArticulo")
+    +" AND d.articulo = :idArticulo;", nativeQuery = true)
     Optional<Demanda> getDemandaMesAñoActual (@Param(value = "idArticulo") Long idArticulo);
+
+
 }

@@ -30,9 +30,12 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
     @Autowired
     private OrdenDeCompraServiceImpl ordenDeCompraService;
 
-    public VentaServiceImpl (BaseRepository<Venta, Long> baseRepository, VentaRepository ventaRepository){
+    public VentaServiceImpl(BaseRepository<Venta, Long> baseRepository, VentaRepository ventaRepository, EntityManager entityManager, ArticuloServiceImpl articuloService, OrdenDeCompraServiceImpl ordenDeCompraService) {
         super(baseRepository);
         this.ventaRepository = ventaRepository;
+        this.entityManager = entityManager;
+        this.articuloService = articuloService;
+        this.ordenDeCompraService = ordenDeCompraService;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
         try{
 
             for (LineaVenta lineaVenta : v.getLineasVenta()) { //por cada linea de venta
-                Articulo articulo = articuloService.findById(lineaVenta.getArticulo().getId());   //obtener el articulo
+                Articulo articulo = articuloService.findById(lineaVenta.getArticulo().getId());   //obtener el articulo, se podría hacer desde el ventaRepository
                 //checkear si hay stock
                 if (articulo.getStockActual() < lineaVenta.getCantidad()){
                     throw new Exception("El artículo "+articulo.getNombre()+" no posee suficiente stock como para realizar la venta");
@@ -59,7 +62,7 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
                             .cantidad(lineaVenta.getCantidad())
                             .build();
 
-                    entityManager.persist(demanda);
+                    entityManager.persist(demanda); //se podría persistir tod o de una
                     entityManager.flush();
                 } else {
                     Demanda demanda = demandaMesAñoActual.get();
@@ -73,6 +76,8 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
                 entityManager.persist(articulo);
                 entityManager.flush();
                 if (articulo.getPuntoPedido() >= articulo.getStockActual()) {
+                    //encapsular lógica de crear la orden de compra en otro objeto
+                    //TODO implementar acá la lógica de crear la orden de compra de múltiples artículos agrupados por proveedor
                     ordenDeCompraService.generarOrdenDeCompra(articulo.getId(), articulo.getPredeterminado().getId());
                 }
             }

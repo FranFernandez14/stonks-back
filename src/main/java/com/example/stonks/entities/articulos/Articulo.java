@@ -35,6 +35,8 @@ public class Articulo extends Base {
     private int precioVenta;
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
+    @Column(name = "costo_almacenamiento")
+    private float costoAlmacenamiento;
 
     @ManyToOne
     @JoinColumn(name = "id_familia_articulo")

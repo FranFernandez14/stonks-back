@@ -42,6 +42,6 @@ public class Proveedor extends Base {
     @Column(name = "costo_envio_proveedor")
     private double costoEnvio;
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ProveedorArticulo> proveedorArticulos;
 }
