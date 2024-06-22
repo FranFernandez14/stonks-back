@@ -1,13 +1,13 @@
-package com.example.stonks.services;
+package com.example.stonks.services.demanda;
 
-import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.demanda.Demanda;
-import com.example.stonks.entities.demanda.Prediccion;
 import com.example.stonks.repositories.BaseRepository;
 import com.example.stonks.repositories.DemandaRepository;
+import com.example.stonks.services.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
@@ -30,17 +30,26 @@ public class DemandaServiceImpl extends BaseServiceImpl<Demanda, Long> implement
             int mes = entity.getMes();
             Long idArticulo = entity.getArticulo().getId();
 
-            Collection<Demanda> demandaPrevia = this.demandaRepository.getDemandaByFecha(idArticulo, mes, año);
+            int cantidadVentas = this.demandaRepository.listVentasPorArticulo(
+                    idArticulo,
+                    mes,
+                    año);
 
-            //Revisa si ya existía antes una demanda previa, si ya existía no se persiste
-            if(demandaPrevia.isEmpty()) {
-                int cantidadVentas = this.demandaRepository.listVentasPorArticulo(entity.getArticulo().getId(),
-                        entity.getMes(),
-                        entity.getAño());
-                entity.setCantidad(cantidadVentas);
-                return this.baseRepository.save(entity);
+            entity.setCantidad(cantidadVentas);
+
+            //Revisa si ya existía antes una demanda previa
+            ArrayList<Demanda> demandaPrevia = this.demandaRepository.getDemandaByFecha(idArticulo, mes, año);
+            if(!(demandaPrevia.isEmpty())) {
+                demandaPrevia.get(0).setCantidad(cantidadVentas);
+                return this.demandaRepository.save(demandaPrevia.get(0));
             } else {
-                return null;
+                Demanda demanda = Demanda.builder()
+                        .mes(mes)
+                        .año(año)
+                        .cantidad(cantidadVentas)
+                        .articulo(entity.getArticulo())
+                        .build();
+                return this.demandaRepository.save(demanda);
             }
 
         } catch (Exception e) {

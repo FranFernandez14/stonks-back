@@ -1,9 +1,8 @@
 package com.example.stonks.controllers;
 
 import com.example.stonks.entities.demanda.Demanda;
-import com.example.stonks.services.DemandaServiceImpl;
+import com.example.stonks.services.demanda.DemandaServiceImpl;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

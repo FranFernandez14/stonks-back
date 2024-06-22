@@ -2,12 +2,14 @@ package com.example.stonks.entities.orden_de_compra;
 
 import com.example.stonks.entities.Base;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.sql.Date;
 
 @Data
 @Entity
+@Builder
 public class OrdenDeCompra extends Base {
 
     private int nroOrdenDeCompra;

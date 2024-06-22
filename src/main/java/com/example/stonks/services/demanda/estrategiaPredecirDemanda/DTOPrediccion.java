@@ -1,14 +1,18 @@
-package com.example.stonks.services.estrategiaPredecirDemanda;
+package com.example.stonks.services.demanda.estrategiaPredecirDemanda;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@Builder
 public class DTOPrediccion {
 
     private float valorPrediccion;
 
-    private float errorCometido;
+    private int mes;
+
+    private int año;
 
 }

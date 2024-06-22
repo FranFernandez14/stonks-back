@@ -1,8 +1,8 @@
 package com.example.stonks.controllers;
 
-import com.example.stonks.services.DTOIngresoParametrosDemanda;
+import com.example.stonks.services.demanda.DTOIngresoParametrosDemanda;
 import com.example.stonks.entities.demanda.Prediccion;
-import com.example.stonks.services.PrediccionServiceImpl;
+import com.example.stonks.services.demanda.PrediccionServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class PrediccionController extends BaseControllerImpl<Prediccion, Predicc
         try{
             return ResponseEntity.status(HttpStatus.OK).body(this.servicio.predecirDemanda(entity));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"Error. Por favor intente más tarde\"");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + e.getMessage() + "\"");
         }
     }
 }

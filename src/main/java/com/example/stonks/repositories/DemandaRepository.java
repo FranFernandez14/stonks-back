@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Repository
@@ -26,8 +27,8 @@ public interface DemandaRepository extends BaseRepository<Demanda, Long> {
     @Query(value = "SELECT d.* FROM demanda as d " +
                     "WHERE d.año = :año AND d.mes = :mes AND id_articulo = :id_articulo;",
             nativeQuery = true)
-    public Collection<Demanda> getDemandaByFecha (@Param(value = "id_articulo") Long id_articulo,
-                                                  @Param(value = "mes") int mes,
-                                                  @Param(value = "año") int año)
+    public ArrayList<Demanda> getDemandaByFecha (@Param(value = "id_articulo") Long id_articulo,
+                                                 @Param(value = "mes") int mes,
+                                                 @Param(value = "año") int año)
                                                     throws Exception;
 }

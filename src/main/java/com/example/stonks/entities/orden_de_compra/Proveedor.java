@@ -15,6 +15,7 @@ public class Proveedor extends Base {
     private String email;
     private int cantArticulosMinimos;
     private int costoMinimo;
+    private int costoEnvio;
     private int diasDemoraEntrega;
     private int cantArticulosMaximos;
 

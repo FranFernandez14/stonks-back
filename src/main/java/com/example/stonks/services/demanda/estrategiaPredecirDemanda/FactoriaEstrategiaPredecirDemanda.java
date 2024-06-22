@@ -1,4 +1,4 @@
-package com.example.stonks.services.estrategiaPredecirDemanda;
+package com.example.stonks.services.demanda.estrategiaPredecirDemanda;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class FactoriaEstrategiaPredecirDemanda {
 
         List <EstrategiaPredecirDemanda> lista = new ArrayList<EstrategiaPredecirDemanda>();
 
-        lista.add(new EstrategiaEstacionalidad());
+        lista.add(new EstrategiaMetodoIndices());
         lista.add(new EstrategiaPromedioMovil());
         lista.add(new EstrategiaPMSuavizado());
 

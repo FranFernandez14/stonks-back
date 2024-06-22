@@ -1,4 +1,4 @@
-package com.example.stonks.services;
+package com.example.stonks.services.demanda;
 
 import com.example.stonks.entities.articulos.Articulo;
 import lombok.Data;
@@ -12,15 +12,16 @@ public class DTOIngresoParametrosDemanda {
 
     private int cantidadPeriodosAPredecir;
 
-    private int cantidadPeriodosAUtilizar;
+    private int cantidadPeriodosParaError;
 
     //Para el PMP
     private List<Float> ponderacion;
 
+    //Para suavizacion
     private float alfa;
 
     //Para el método de índices
-    private int demandaSiguienteAño;
+    private float demandaAñoAPredecir;
 
     private int ciclos;
 }
