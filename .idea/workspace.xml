@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4db86a18-d699-473a-ad0d-81d84971fa3b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/DetalleOrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/DetalleOrdenDeCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +29,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
@@ -48,9 +51,10 @@
     "Gradle.VentaServiceImplTest.executor": "Run",
     "Gradle.VentaServiceImplTest.testRegistrarCompra.executor": "Run",
     "Gradle.stonks-back [:StonksApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "marcos",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true"
   }

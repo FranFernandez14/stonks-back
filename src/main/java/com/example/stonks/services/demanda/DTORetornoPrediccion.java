@@ -2,6 +2,7 @@ package com.example.stonks.services.demanda;
 
 import com.example.stonks.entities.demanda.Prediccion;
 import com.example.stonks.entities.orden_de_compra.DetalleOrdenDeCompra;
+import com.example.stonks.entities.orden_de_compra.OrdenDeCompra;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,5 +12,5 @@ import java.util.List;
 @Builder
 public class DTORetornoPrediccion {
     private List<Prediccion> listaPrediccion;
-    private DetalleOrdenDeCompra detalleOrdenDeCompra;
+    private OrdenDeCompra ordenDeCompra;
 }
