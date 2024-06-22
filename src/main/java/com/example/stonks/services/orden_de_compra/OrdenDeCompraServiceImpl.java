@@ -45,7 +45,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
         return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
     }
 
-    public void generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
+    public OrdenDeCompra generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
 
         Articulo articulo = articuloService.findById(idArticulo);
 
@@ -74,7 +74,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
         }
         ordenDeCompra.getDetalles().add(detalleOrdenDeCompra);
 
-        ordenDeCompraRepository.save(ordenDeCompra);
+        return this.ordenDeCompraRepository.save(ordenDeCompra);
 
     }
 

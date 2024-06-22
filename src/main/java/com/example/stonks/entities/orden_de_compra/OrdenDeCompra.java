@@ -26,7 +26,7 @@ public class OrdenDeCompra extends Base {
     private Proveedor proveedor;
 
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "id_orden_de_compra")
     List<DetalleOrdenDeCompra> detalles = new ArrayList<DetalleOrdenDeCompra>();
 

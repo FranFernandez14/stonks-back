@@ -13,5 +13,8 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     @Autowired
     private ArticuloRepository articuloRepository;
 
-    public ArticuloServiceImpl(BaseRepository<Articulo, Long> baseRepository) {super(baseRepository);}
+    public ArticuloServiceImpl(BaseRepository<Articulo, Long> baseRepository, ArticuloRepository articuloRepository) {
+        super(baseRepository);
+        this.articuloRepository = articuloRepository;
+    }
 }

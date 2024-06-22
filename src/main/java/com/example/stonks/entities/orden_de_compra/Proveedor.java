@@ -13,6 +13,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "proveedor")
 public class Proveedor extends Base {
 
     @Column(name = "cod_proveedor")
@@ -42,6 +43,7 @@ public class Proveedor extends Base {
     @Column(name = "costo_envio_proveedor")
     private double costoEnvio;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "id_proveedor")
     private List<ProveedorArticulo> proveedorArticulos;
 }

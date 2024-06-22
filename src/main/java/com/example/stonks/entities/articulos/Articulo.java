@@ -38,11 +38,11 @@ public class Articulo extends Base {
     @Column(name = "costo_almacenamiento")
     private float costoAlmacenamiento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_familia_articulo")
     private FamiliaArticulo familiaArticulo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_proveedor_predeterminado")
     @JsonIgnoreProperties("proveedorArticulos")
     private Proveedor predeterminado;

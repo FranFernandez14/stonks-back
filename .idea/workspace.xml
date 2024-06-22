@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4db86a18-d699-473a-ad0d-81d84971fa3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/BaseControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/BaseControllerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/articulos/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/articulos/Articulo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/Proveedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/ProveedorArticulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/ProveedorArticulo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/Venta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/Venta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/PrediccionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/PrediccionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/BaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/articulos/ArticuloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/articulos/ArticuloServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +66,8 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "marcos",
     "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">

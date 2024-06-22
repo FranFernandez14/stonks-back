@@ -1,5 +1,6 @@
 package com.example.stonks.repositories;
 
+import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.demanda.Demanda;
 import com.example.stonks.entities.demanda.Prediccion;
 import com.example.stonks.entities.orden_de_compra.OrdenDeCompra;
@@ -9,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public interface PrediccionRepository extends BaseRepository<Prediccion, Long> {
@@ -34,7 +36,7 @@ public interface PrediccionRepository extends BaseRepository<Prediccion, Long> {
     @Query(value = "SELECT p.* FROM prediccion as p " +
             "INNER JOIN articulo as a ON p.id_articulo = a.id " +
             "WHERE a.id = :id_articulo AND " +
-            "p.mes = :mes AND p.año = :año LIMIT 1;",
+            "p.mes = :mes AND p.año = :año;",
             nativeQuery = true)
     public Prediccion getPrediccionByFecha(@Param(value = "id_articulo") Long id_articulo,
                                            @Param(value = "mes") int mes,
@@ -58,9 +60,6 @@ public interface PrediccionRepository extends BaseRepository<Prediccion, Long> {
     public ArrayList<Demanda> getDemandasByAño(@Param(value = "id_articulo") Long id_articulo,
                                                @Param(value = "año") int año) throws Exception;
 
-    @Query(value =  "SELECT o.* FROM orden_de_compra as o " +
-                    "INNER JOIN detalle_orden_de_compra as d ON d.id_orden_de_compra = o.id " +
-                    "WHERE d.id_articulo = :id_articulo AND o.estado_actual = 1;",
-                    nativeQuery = true)
-    public ArrayList<OrdenDeCompra> getOrdenDeCompraPendienteByArticulo(@Param(value = "id_articulo") Long id_articulo) throws Exception;
+    //Retorna una lista de predicciones cuyo mes y año se encuentre en la lista
+    ArrayList<Prediccion> findByMesInAndAñoInAndArticulo(List<Integer> meses, List<Integer> años, Articulo articulo);
 }
