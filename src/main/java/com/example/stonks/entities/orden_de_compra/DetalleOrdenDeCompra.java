@@ -4,12 +4,16 @@ package com.example.stonks.entities.orden_de_compra;
 import com.example.stonks.entities.Base;
 import com.example.stonks.entities.articulos.Articulo;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class DetalleOrdenDeCompra extends Base {
 
 
@@ -21,12 +25,5 @@ public class DetalleOrdenDeCompra extends Base {
 
     private double valorArticulo;
     private double totalDetalle;
-
-    /*@ManyToOne
-    @JoinColumn(name = "id_orden_de_compra")
-    private OrdenDeCompra ordenDeCompra;*/
-
-
-
 
 }

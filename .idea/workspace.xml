@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4db86a18-d699-473a-ad0d-81d84971fa3b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/articulos/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/articulos/Articulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/ProveedorArticulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/ProveedorArticulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/LineaVenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/LineaVenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/Venta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/Venta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/DetalleOrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/DetalleOrdenDeCompra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +60,7 @@
       <recent name="D:\UTN\4-Cuarto año\Investigación Operativa\TP Integrador\stonks-back\stonks-back\src\test\java\com\example\stonks\ServicesTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.VentaServiceImplTest">
+  <component name="RunManager" selected="Application.StonksApplication">
     <configuration name="StonksApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.stonks.StonksApplication" />
       <module name="stonks.main" />

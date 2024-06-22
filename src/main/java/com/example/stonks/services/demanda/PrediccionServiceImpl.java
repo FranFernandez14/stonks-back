@@ -94,6 +94,13 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
                         .mapToDouble(DTOPrediccion::getValorPrediccion)
                         .reduce(0, Double::sum);
 
+                detalleOrdenDeCompra = DetalleOrdenDeCompra.builder()
+                        .articulo(dtoIngresoParametrosDemanda.getArticulo())
+                        .cantidad(cantidadRequerida)
+                        .subTotal(cantidadRequerida * costo)
+                        .build();
+
+
                 OrdenDeCompra ordenDeCompra = OrdenDeCompra.builder()
                         .fechaCreacion(new Date(System.currentTimeMillis()))
                         .estadoActual(EstadoODC.SIN_CONFIRMAR)
@@ -102,14 +109,9 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
                         .proveedor(proveedor)
                         .build();
 
-                detalleOrdenDeCompra = DetalleOrdenDeCompra.builder()
-                        .ordenDeCompra(ordenDeCompra)
-                        .articulo(dtoIngresoParametrosDemanda.getArticulo())
-                        .cantidad(cantidadRequerida)
-                        .subTotal(cantidadRequerida * costo)
-                        .build();
+                ordenDeCompra.getDetalles().add(detalleOrdenDeCompra);
 
-                this.entityManager.persist(detalleOrdenDeCompra);
+                this.entityManager.persist(ordenDeCompra);
                 this.entityManager.flush();
             }
 
