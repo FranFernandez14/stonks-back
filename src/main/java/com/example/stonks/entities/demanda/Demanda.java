@@ -3,6 +3,7 @@ package com.example.stonks.entities.demanda;
 import com.example.stonks.entities.Base;
 import com.example.stonks.entities.articulos.Articulo;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ public class Demanda extends Base {
     private int mes;
     private int año;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 

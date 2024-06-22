@@ -21,7 +21,7 @@ public class Venta extends Base {
     @Column(name = "nro_venta")
     private int nroVenta;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 

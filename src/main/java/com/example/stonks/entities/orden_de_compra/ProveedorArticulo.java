@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class ProveedorArticulo extends Base {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "articulo_id")
     private Articulo articulo;
 
