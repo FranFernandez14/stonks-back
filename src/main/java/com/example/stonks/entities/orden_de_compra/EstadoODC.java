@@ -18,4 +18,14 @@ public enum EstadoODC {
         return numero;
     }
 
+    public static EstadoODC fromNumero(int numero) {
+        for (EstadoODC estado : EstadoODC.values()) {
+            if (estado.getNumero() == numero) {
+                return estado;
+            }
+        }
+        throw new IllegalArgumentException("Número de estado no válido: " + numero);
+    }
+
+
 }

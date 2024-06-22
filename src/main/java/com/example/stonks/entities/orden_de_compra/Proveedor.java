@@ -1,24 +1,47 @@
 package com.example.stonks.entities.orden_de_compra;
 
 import com.example.stonks.entities.Base;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.*;
 @Entity
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Proveedor extends Base {
 
+    @Column(name = "cod_proveedor")
     private int cod;
-    private String nombre;
-    private String email;
-    private int cantArticulosMinimos;
-    private int costoMinimo;
-    private int costoEnvio;
-    private int diasDemoraEntrega;
-    private int cantArticulosMaximos;
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "nombre_proveedor")
+    private String nombre;
+
+    @Column(name = "email_proveedor")
+    private String email;
+
+    /*@Column(name = "cantidad_articulos_minimos_proveedor")
+    private int cantArticulosMinimos;
+
+    @Column(name = "costo_minimo_proveedor")
+    private int costoMinimo;
+
+    @Column(name = "dias_demora_entrega_proveedor")
+    private int diasDemoraEntrega;
+
+    @Column(name = "cantidad_articulos_maximos_proveedor")
+    private int cantArticulosMaximos;*/
+
+    @Column(name = "dias_demora_entrega_proveedor")
+    private int diasDemoraEntrega;
+
+    @Column(name = "costo_envio_proveedor")
+    private double costoEnvio;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<ProveedorArticulo> proveedorArticulos;
 }

@@ -19,7 +19,14 @@ public class DetalleOrdenDeCompra extends Base {
     private int cantidad;
     private Double subTotal;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    private double valorArticulo;
+    private double totalDetalle;
+
+    /*@ManyToOne
     @JoinColumn(name = "id_orden_de_compra")
-    private OrdenDeCompra ordenDeCompra;
+    private OrdenDeCompra ordenDeCompra;*/
+
+
+
+
 }

@@ -9,8 +9,7 @@ public class StonksApplication {
 	public static void main(String[] args) {
 
 		SpringApplication.run(StonksApplication.class, args);
-
-		System.out.println("Corriendo API");
+		System.out.println("Stonks se ha iniciado correctamente");
 	}
 
 }
