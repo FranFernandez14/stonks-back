@@ -1,5 +1,6 @@
 package com.example.stonks.services.demanda;
 
+import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.demanda.Prediccion;
 import com.example.stonks.entities.orden_de_compra.*;
 import com.example.stonks.repositories.BaseRepository;
@@ -101,9 +102,16 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
 
             this.prediccionRepository.saveAll(prediccionesParaPersistir);
 
-            OrdenDeCompra ordenDeCompra = this.ordenDeCompraServiceImpl.generarOrdenDeCompra(
-                    dtoIngresoParametrosDemanda.getArticulo().getId(),
-                    dtoIngresoParametrosDemanda.getArticulo().getPredeterminado().getId()
+            float demandaEsperada = prediccionGanadora.getListaPrediccion()
+                                    .get(dtoIngresoParametrosDemanda.getCantidadPeriodosParaError())
+                                    .getValorPrediccion();
+
+            Articulo articulo = dtoIngresoParametrosDemanda.getArticulo();
+            OrdenDeCompra ordenDeCompra = null;
+            if (articulo.getStockActual() - demandaEsperada< articulo.getPuntoPedido())
+                ordenDeCompra = this.ordenDeCompraServiceImpl.generarOrdenDeCompra(
+                dtoIngresoParametrosDemanda.getArticulo().getId(),
+                dtoIngresoParametrosDemanda.getArticulo().getPredeterminado().getId()
             );
 
             DTORetornoPrediccion dtoRetornoPrediccion = DTORetornoPrediccion.builder()
