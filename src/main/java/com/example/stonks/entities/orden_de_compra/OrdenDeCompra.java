@@ -2,12 +2,14 @@ package com.example.stonks.entities.orden_de_compra;
 
 import com.example.stonks.entities.Base;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.*;
 
 @Data
 @Entity
+@Builder
 public class OrdenDeCompra extends Base {
 
     private int nroOrdenDeCompra;
@@ -19,12 +21,12 @@ public class OrdenDeCompra extends Base {
     @Enumerated(EnumType.ORDINAL)
     private EstadoODC estadoActual;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
 
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "id_orden_de_compra")
     List<DetalleOrdenDeCompra> detalles = new ArrayList<DetalleOrdenDeCompra>();
 

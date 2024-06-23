@@ -11,9 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProveedorArticuloRepository extends BaseRepository<ProveedorArticulo, Long> {
 
-
-    @Query("SELECT pa FROM ProveedorArticulo pa WHERE pa.proveedor = :proveedor AND pa.articulo = :articulo")
-    ProveedorArticulo findProveedorArticuloByProveedorAndArticulo(@Param("proveedor") Proveedor proveedor, @Param("articulo") Articulo articulo);
+    @Query(value = "SELECT pa FROM ProveedorArticulo as pa WHERE pa.proveedor_id = :id_proveedor AND pa.articulo_id = :id_articulo;", nativeQuery = true)
+    ProveedorArticulo findProveedorArticuloByProveedorAndArticulo(@Param(value = "id_proveedor") Long id_proveedor, @Param(value = "id_articulo") Long id_articulo);
 
 
 }

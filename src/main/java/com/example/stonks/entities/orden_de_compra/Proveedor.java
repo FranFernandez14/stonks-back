@@ -3,6 +3,7 @@ package com.example.stonks.entities.orden_de_compra;
 import com.example.stonks.entities.Base;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,8 @@ import java.util.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@Table(name = "proveedor")
 public class Proveedor extends Base {
 
     @Column(name = "cod_proveedor")
@@ -28,6 +31,7 @@ public class Proveedor extends Base {
     @Column(name = "costo_envio_proveedor")
     private double costoEnvio;
 
-    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "id_proveedor")
     private List<ProveedorArticulo> proveedorArticulos;
 }

@@ -3,6 +3,7 @@ package com.example.stonks.services;
 import com.example.stonks.entities.Base;
 import com.example.stonks.repositories.BaseRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -11,6 +12,8 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class BaseServiceImpl<E extends Base, ID extends Serializable> implements BaseService<E, ID> {
+
+    @Autowired
     protected BaseRepository<E,ID> baseRepository;
 
     public BaseServiceImpl(BaseRepository<E, ID> baseRepository) {

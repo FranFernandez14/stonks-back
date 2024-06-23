@@ -4,17 +4,19 @@ import com.example.stonks.entities.Base;
 import com.example.stonks.entities.articulos.Articulo;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
-@Table(name = "Linea_venta")
+@Table(name = "linea_venta")
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class LineaVenta extends Base {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 
@@ -24,14 +26,6 @@ public class LineaVenta extends Base {
     @Column(name = "precio_unitario")
     private double precioUnitario;
 
-    @Column(name = "subtotal")
-    private double subtotal;
-
     @Column(name = "cantidad")
     private int cantidad;
-
-    @ManyToOne
-    @JoinColumn(name = "id_venta")
-    private Venta venta;
-
 }

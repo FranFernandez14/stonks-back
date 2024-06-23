@@ -21,6 +21,6 @@ public class ProveedorArticuloServiceImpl extends BaseServiceImpl<ProveedorArtic
 
 
     public ProveedorArticulo getProveedorArticuloByProveedorAndArticulo(Proveedor proveedor, Articulo articulo){
-        return proveedorArticuloRepository.findProveedorArticuloByProveedorAndArticulo(proveedor, articulo);
+        return proveedorArticuloRepository.findProveedorArticuloByProveedorAndArticulo(proveedor.getId(), articulo.getId());
     }
 }

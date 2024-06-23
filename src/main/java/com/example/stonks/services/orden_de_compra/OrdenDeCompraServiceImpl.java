@@ -18,14 +18,17 @@ import java.util.Optional;
 
 @Service
 public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Long> implements OrdenDeCompraService{
+    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository, ArticuloServiceImpl articuloService, ProveedorArticuloService proveedorArticuloService, DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService, ProveedorServiceImpl proveedorService, OrdenDeCompraRepository ordenDeCompraRepository) {
+        super(baseRepository);
+        this.articuloService = articuloService;
+        this.proveedorArticuloService = proveedorArticuloService;
+        this.detalleOrdenDeCompraService = detalleOrdenDeCompraService;
+        this.proveedorService = proveedorService;
+        this.ordenDeCompraRepository = ordenDeCompraRepository;
+    }
 
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
-
-    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository, OrdenDeCompraRepository ordenDeCompraRepository) {
-        super(baseRepository);
-        this.ordenDeCompraRepository = ordenDeCompraRepository;
-    }
 
 
     public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
@@ -46,7 +49,11 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
     @Autowired
     private ProveedorServiceImpl proveedorService;
 
-    public void generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
+    public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
+        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
+    }
+
+    public OrdenDeCompra generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
 
         Articulo articulo = articuloService.findById(idArticulo);
 
@@ -75,7 +82,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
         }
         ordenDeCompra.getDetalles().add(detalleOrdenDeCompra);
 
-        ordenDeCompraRepository.save(ordenDeCompra);
+        return this.ordenDeCompraRepository.save(ordenDeCompra);
 
     }
 

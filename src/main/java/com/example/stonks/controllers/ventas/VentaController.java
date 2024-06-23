@@ -17,7 +17,7 @@ public class VentaController extends BaseControllerImpl<Venta, VentaServiceImpl>
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.registrarVenta(venta));
         }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + e.getMessage() + "\"}");
         }
     }
 }

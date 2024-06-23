@@ -16,7 +16,7 @@ import java.util.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Builder
 public class Articulo extends Base {
 
     @Column(name = "cod")
@@ -35,12 +35,14 @@ public class Articulo extends Base {
     private double precioVenta;
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
+    @Column(name = "costo_almacenamiento")
+    private float costoAlmacenamiento;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_familia_articulo")
     private FamiliaArticulo familiaArticulo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_proveedor_predeterminado")
     @JsonIgnoreProperties("proveedorArticulos")
     private Proveedor predeterminado;
