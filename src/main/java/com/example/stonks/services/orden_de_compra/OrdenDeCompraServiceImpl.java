@@ -8,19 +8,25 @@ import com.example.stonks.repositories.orden_de_compra.OrdenDeCompraRepository;
 import com.example.stonks.services.BaseServiceImpl;
 import com.example.stonks.services.articulos.ArticuloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Long> implements OrdenDeCompraService{
-    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository) {
-        super(baseRepository);
-    }
 
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
+
+    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository, OrdenDeCompraRepository ordenDeCompraRepository) {
+        super(baseRepository);
+        this.ordenDeCompraRepository = ordenDeCompraRepository;
+    }
+
 
     public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
         return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
@@ -111,6 +117,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
 
     }
-
-
+    public Page<OrdenDeCompra> getByState(EstadoODC estadoODC, Pageable pageable) throws Exception {
+        return ordenDeCompraRepository.getByState(estadoODC, pageable);
+    }
 }
