@@ -13,26 +13,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 @Service
 public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Long> implements OrdenDeCompraService{
-    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository, ArticuloServiceImpl articuloService, ProveedorArticuloService proveedorArticuloService, DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService, ProveedorServiceImpl proveedorService, OrdenDeCompraRepository ordenDeCompraRepository) {
-        super(baseRepository);
-        this.articuloService = articuloService;
-        this.proveedorArticuloService = proveedorArticuloService;
-        this.detalleOrdenDeCompraService = detalleOrdenDeCompraService;
-        this.proveedorService = proveedorService;
-        this.ordenDeCompraRepository = ordenDeCompraRepository;
-    }
 
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
 
-
-    public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
-        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
+    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository) {
+        super(baseRepository);
     }
 
 

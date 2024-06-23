@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
 public interface OrdenDeCompraRepository extends BaseRepository<OrdenDeCompra, Long> {
 
@@ -19,4 +18,5 @@ public interface OrdenDeCompraRepository extends BaseRepository<OrdenDeCompra, L
 
     @Query("SELECT o FROM OrdenDeCompra o WHERE o.estadoActual = :estadoActual")
     Page<OrdenDeCompra> getByState(@Param("estadoActual") EstadoODC estadoODC, Pageable pageable);
+
 }
