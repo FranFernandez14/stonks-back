@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4db86a18-d699-473a-ad0d-81d84971fa3b" name="Changes" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
@@ -12,9 +13,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/stonks/ServicesTest/EstrategiaMetodoIndicesTest.java" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo$ArticuloBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo$ArticuloBuilder.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo.class" afterDir="false" />
@@ -39,6 +44,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/orden_de_compra/OrdenDeCompraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/orden_de_compra/OrdenDeCompraRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTOIngresoParametrosDemanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTOIngresoParametrosDemanda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,6 +85,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -95,6 +105,23 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.EstrategiaMetodoIndicesTest.testEstrategiaMetodoIndices.executor": "Run",
+    "Gradle.VentaServiceImplTest.executor": "Run",
+    "Gradle.VentaServiceImplTest.testRegistrarCompra.executor": "Run",
+    "Gradle.stonks-back [:StonksApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
+>>>>>>> Stashed changes
   }
 }</component>
   <component name="RecentsManager">
@@ -102,7 +129,7 @@
       <recent name="D:\UTN\4-Cuarto año\Investigación Operativa\TP Integrador\stonks-back\stonks-back\src\test\java\com\example\stonks\ServicesTest" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StonksApplication">
+  <component name="RunManager" selected="Gradle.EstrategiaMetodoIndicesTest.testEstrategiaMetodoIndices">
     <configuration name="StonksApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.stonks.StonksApplication" />
       <module name="stonks.main" />
@@ -115,6 +142,30 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="EstrategiaMetodoIndicesTest.testEstrategiaMetodoIndices" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.stonks.ServicesTest.EstrategiaMetodoIndicesTest.testEstrategiaMetodoIndices&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
     </configuration>
     <configuration name="VentaServiceImplTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -186,6 +237,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.EstrategiaMetodoIndicesTest.testEstrategiaMetodoIndices" />
         <item itemvalue="Gradle.VentaServiceImplTest" />
         <item itemvalue="Gradle.VentaServiceImplTest.testRegistrarCompra" />
         <item itemvalue="Application.StonksApplication" />
