@@ -32,7 +32,7 @@ public class Articulo extends Base {
     @Column(name = "puntoPedido")
     private int puntoPedido;
     @Column(name = "precioVenta")
-    private int precioVenta;
+    private double precioVenta;
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
     @Column(name = "costo_almacenamiento")
