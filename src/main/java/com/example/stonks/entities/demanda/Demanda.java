@@ -2,15 +2,8 @@ package com.example.stonks.entities.demanda;
 
 import com.example.stonks.entities.Base;
 import com.example.stonks.entities.articulos.Articulo;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.Date;
 
@@ -20,10 +13,17 @@ import java.util.Date;
 @Entity
 @Table(name = "demanda")
 @Builder
+@Getter
+@Setter
 public class Demanda extends Base {
 
-    private float cantidad;
+    @Column(name = "nro_demanda")
+    private int nroDemanda;
+    @Column(name = "cantidad")
+    private int cantidad;
+    @Column(name = "mes")
     private int mes;
+    @Column(name = "año")
     private int año;
 
     @ManyToOne(fetch = FetchType.LAZY)

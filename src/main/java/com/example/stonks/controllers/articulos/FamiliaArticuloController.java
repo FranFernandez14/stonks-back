@@ -2,10 +2,12 @@ package com.example.stonks.controllers.articulos;
 
 import com.example.stonks.controllers.BaseControllerImpl;
 import com.example.stonks.entities.articulos.FamiliaArticulo;
+import com.example.stonks.entities.articulos.ModeloInventario;
 import com.example.stonks.services.articulos.FamiliaArticuloServiceImpl;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -13,4 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "api/v1/familiaArticulo")
 public class FamiliaArticuloController extends BaseControllerImpl<FamiliaArticulo, FamiliaArticuloServiceImpl> {
 
+    @Autowired
+    private FamiliaArticuloServiceImpl familiaArticuloService;
+
+    @PostMapping
+    public FamiliaArticulo crearFamiliaArticulo(
+            @RequestParam String nombre,
+            @RequestParam ModeloInventario modeloInventario) {
+        try {
+            return familiaArticuloService.crearFamiliaArticulo(nombre, modeloInventario);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
+        }
+    }
 }

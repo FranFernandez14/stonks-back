@@ -27,3 +27,4 @@ public class FamiliaArticulo extends Base {
     private ModeloInventario modeloInventario;
 
 }
+

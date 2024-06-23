@@ -9,7 +9,9 @@ import com.example.stonks.services.articulos.ArticuloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,4 +27,16 @@ public class DetalleOrdenDeCompraServiceImpl extends BaseServiceImpl<DetalleOrde
         return  detalleOrdenDeCompraRepository.findByOrdenDeCompraIdAndArticuloId(idOrdenDeCompra, idArticulo);
     }
 
+    public boolean verificarArticuloEnOrdenesDetallesEnProgreso(Articulo articulo) {
+        List<EstadoODC> estadosEnProgreso = Arrays.asList(
+                EstadoODC.SIN_CONFIRMAR,
+                EstadoODC.CONFIRMADA,
+                EstadoODC.ACEPTADA,
+                EstadoODC.EN_CAMINO
+        );
+
+        // Consulta los detalles de orden de compra que tienen el artículo y están en los estados en progreso
+        List<DetalleOrdenDeCompra> detallesEnProgreso = detalleOrdenDeCompraRepository.findByArticuloAndOrdenDeCompraEstados(articulo, estadosEnProgreso);
+        return !detallesEnProgreso.isEmpty();
+    }
 }
