@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4db86a18-d699-473a-ad0d-81d84971fa3b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/BaseControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/BaseControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/articulos/Articulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/articulos/Articulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/Proveedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/Proveedor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/ProveedorArticulo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/ProveedorArticulo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/Venta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/ventas/Venta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/PrediccionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/PrediccionRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/BaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/articulos/ArticuloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/articulos/ArticuloServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,22 +43,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.VentaServiceImplTest.executor": "Run",
-    "Gradle.VentaServiceImplTest.testRegistrarCompra.executor": "Run",
-    "Gradle.stonks-back [:StonksApplication.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "marcos",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VentaServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.VentaServiceImplTest.testRegistrarCompra.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.stonks-back [:StonksApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;marcos&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\UTN\4-Cuarto año\Investigación Operativa\TP Integrador\stonks-back\stonks-back\src\test\java\com\example\stonks\ServicesTest" />
