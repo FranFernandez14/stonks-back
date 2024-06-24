@@ -13,10 +13,9 @@ import java.util.*;
 @Data
 @Entity
 @Table(name = "Articulo")
-@Setter
-@Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 
 public class Articulo extends Base {
 
@@ -33,7 +32,7 @@ public class Articulo extends Base {
     @Column(name = "puntoPedido")
     private int puntoPedido;
     @Column(name = "precioVenta")
-    private int precioVenta;
+    private double precioVenta;
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
     @Column(name = "cp")
@@ -43,11 +42,11 @@ public class Articulo extends Base {
     @Column(name = "k")
     private double k;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_familia_articulo")
     private FamiliaArticulo familiaArticulo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_proveedor_predeterminado")
     @JsonIgnoreProperties("proveedorArticulos")
     private Proveedor predeterminado;

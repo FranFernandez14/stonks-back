@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - EstrategiaMetodoIndicesTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>EstrategiaMetodoIndicesTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.stonks.ServicesTest.html">com.example.stonks.ServicesTest</a> &gt; EstrategiaMetodoIndicesTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">1</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.392s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox failures" id="successRate">
+<div class="percent">0%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Failed tests</a>
+</li>
+<li>
+<a href="#tab1">Tests</a>
+</li>
+<li>
+<a href="#tab2">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Failed tests</h2>
+<div class="test">
+<a name="testEstrategiaMetodoIndices()"></a>
+<h3 class="failures">testEstrategiaMetodoIndices()</h3>
+<span class="code">
+<pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.List.size()&quot; because the return value of &quot;com.example.stonks.services.demanda.DTORetornoPrediccion.getListaPrediccion()&quot; is null
+	at com.example.stonks.ServicesTest.EstrategiaMetodoIndicesTest.testEstrategiaMetodoIndices(EstrategiaMetodoIndicesTest.java:136)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+</pre>
+</span>
+</div>
+</div>
+<div id="tab1" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="failures">testEstrategiaMetodoIndices()</td>
+<td class="failures">1.392s</td>
+<td class="failures">failed</td>
+</tr>
+</table>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.0)
+
+2024-06-23T17:46:29.162-03:00  INFO 8412 --- [stonks] [    Test worker] c.e.s.S.EstrategiaMetodoIndicesTest      : Starting EstrategiaMetodoIndicesTest using Java 17.0.11 with PID 8412 (started by facun in D:\UTN\4-Cuarto año\Investigación Operativa\TP Integrador\stonks-back\stonks-back)
+2024-06-23T17:46:29.164-03:00  INFO 8412 --- [stonks] [    Test worker] c.e.s.S.EstrategiaMetodoIndicesTest      : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-06-23T17:46:29.810-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-23T17:46:29.812-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-06-23T17:46:29.844-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.articulos.ArticuloRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.846-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.articulos.FamiliaArticuloRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.847-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.DemandaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.848-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.DetalleOrdenDeCompraRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.849-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.OrdenDeCompraRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.850-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.ProveedorArticuloRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.851-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.ProveedorRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.852-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.PrediccionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.853-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.ventas.ClienteRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.854-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.ventas.LineaVentaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.855-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.ventas.VentaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:29.857-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40 ms. Found 0 JDBC repository interfaces.
+2024-06-23T17:46:29.866-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-23T17:46:29.868-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-23T17:46:29.911-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41 ms. Found 11 JPA repository interfaces.
+2024-06-23T17:46:30.303-03:00  INFO 8412 --- [stonks] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-23T17:46:30.396-03:00  INFO 8412 --- [stonks] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-06-23T17:46:30.430-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-23T17:46:30.688-03:00  INFO 8412 --- [stonks] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-23T17:46:30.711-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-23T17:46:30.847-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:test user=ROOT
+2024-06-23T17:46:30.849-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-23T17:46:30.870-03:00  WARN 8412 --- [stonks] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-23T17:46:31.474-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.example.stonks.entities.orden_de_compra.OrdenDeCompra (class must be instantiated by Interceptor)
+2024-06-23T17:46:31.527-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.example.stonks.entities.demanda.Prediccion (class must be instantiated by Interceptor)
+2024-06-23T17:46:31.705-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table articulo (id bigint generated by default as identity, fecha_baja timestamp(6), cod varchar(255), costo_almacenamiento float(24), inventario_maximo integer, lote_optimo integer, nombre varchar(255), precio_venta integer, punto_pedido integer, stock_actual integer, stock_seguridad integer, id_familia_articulo bigint, id_proveedor_predeterminado bigint, primary key (id))
+Hibernate: create table cliente (id bigint generated by default as identity, fecha_baja timestamp(6), cuit_cliente varchar(255), nombre_cliente varchar(255), nro_cliente integer, primary key (id))
+Hibernate: create table demanda (id bigint generated by default as identity, fecha_baja timestamp(6), año integer not null, cantidad float(24) not null, mes integer not null, id_articulo bigint, primary key (id))
+Hibernate: create table detalle_orden_de_compra (id bigint generated by default as identity, fecha_baja timestamp(6), cantidad integer not null, sub_total float(53), total_detalle float(53) not null, valor_articulo float(53) not null, id_articulo bigint, id_orden_de_compra bigint, primary key (id))
+Hibernate: create table familia_articulo (id bigint generated by default as identity, fecha_baja timestamp(6), cod integer, modelo_inventario enum ('Intervalo_Fijo','Lote_Fijo'), nombre varchar(255), primary key (id))
+Hibernate: create table linea_venta (id bigint generated by default as identity, fecha_baja timestamp(6), cantidad integer, contador_linea_venta integer, precio_unitario float(53), id_articulo bigint, id_venta bigint, primary key (id))
+Hibernate: create table orden_de_compra (id bigint generated by default as identity, fecha_baja timestamp(6), costo_envio float(53), costo_total float(53), estado_actual tinyint check (estado_actual between 0 and 5), fecha_creacion timestamp(6), fecha_llegada timestamp(6), nro_orden_de_compra integer not null, id_proveedor bigint, primary key (id))
+Hibernate: create table prediccion (id bigint generated by default as identity, fecha_baja timestamp(6), año integer not null, cantidad_predecida float(24) not null, mes integer not null, id_articulo bigint, primary key (id))
+Hibernate: create table proveedor (id bigint generated by default as identity, fecha_baja timestamp(6), cod_proveedor integer, costo_envio_proveedor float(53), dias_demora_entrega_proveedor integer, email_proveedor varchar(255), nombre_proveedor varchar(255), primary key (id))
+Hibernate: create table proveedor_articulo (id bigint generated by default as identity, fecha_baja timestamp(6), precio float(53), articulo_id bigint, id_proveedor bigint, primary key (id))
+Hibernate: create table venta (id bigint generated by default as identity, fecha_baja timestamp(6), fecha_venta date, nro_venta integer, id_cliente bigint, primary key (id))
+Hibernate: alter table if exists articulo add constraint FKpfrftj5u5ss9l5tsflblrbfxl foreign key (id_familia_articulo) references familia_articulo
+Hibernate: alter table if exists articulo add constraint FKsph8sbgrid2uyj3dkx7sh7pgb foreign key (id_proveedor_predeterminado) references proveedor
+Hibernate: alter table if exists demanda add constraint FKapvcv1ca14ltu6py82qj9r2au foreign key (id_articulo) references articulo
+Hibernate: alter table if exists detalle_orden_de_compra add constraint FKea6k9u56tvhiiyk05cfnx6wcs foreign key (id_articulo) references articulo
+Hibernate: alter table if exists detalle_orden_de_compra add constraint FK9m7js4nn04ubbi19it7ymdjy7 foreign key (id_orden_de_compra) references orden_de_compra
+Hibernate: alter table if exists linea_venta add constraint FK2fslsq7vtch9iy07narrg5tqb foreign key (id_articulo) references articulo
+Hibernate: alter table if exists linea_venta add constraint FKstbqx9nuuxsipwobrae5bvqfh foreign key (id_venta) references venta
+Hibernate: alter table if exists orden_de_compra add constraint FKd70kmcb8s2a2oumua7cal85j5 foreign key (id_proveedor) references proveedor
+Hibernate: alter table if exists prediccion add constraint FKn7f5cmwmb80of76aaiimpwv6t foreign key (id_articulo) references articulo
+Hibernate: alter table if exists proveedor_articulo add constraint FKjob79ysyvn7t7pile5bcov09 foreign key (articulo_id) references articulo
+Hibernate: alter table if exists proveedor_articulo add constraint FKp5wev2i2cou5gk4h4dpx08rb foreign key (id_proveedor) references proveedor
+Hibernate: alter table if exists venta add constraint FKsor2qmi3thao7a8or49vlohp9 foreign key (id_cliente) references cliente
+2024-06-23T17:46:31.775-03:00  INFO 8412 --- [stonks] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-23T17:46:32.090-03:00  INFO 8412 --- [stonks] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : JSqlParser is in classpath; If applicable, JSqlParser will be used
+2024-06-23T17:46:32.090-03:00  INFO 8412 --- [stonks] [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-06-23T17:46:33.220-03:00  WARN 8412 --- [stonks] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-23T17:46:34.030-03:00  INFO 8412 --- [stonks] [    Test worker] c.e.s.S.EstrategiaMetodoIndicesTest      : Started EstrategiaMetodoIndicesTest in 5.043 seconds (process running for 5.941)
+2024-06-23T17:46:34.063-03:00  INFO 8412 --- [stonks] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-06-23T17:46:34.065-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-23T17:46:34.068-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.0)
+
+2024-06-23T17:46:34.094-03:00  INFO 8412 --- [stonks] [    Test worker] c.e.s.S.EstrategiaMetodoIndicesTest      : Starting EstrategiaMetodoIndicesTest using Java 17.0.11 with PID 8412 (started by facun in D:\UTN\4-Cuarto año\Investigación Operativa\TP Integrador\stonks-back\stonks-back)
+2024-06-23T17:46:34.094-03:00  INFO 8412 --- [stonks] [    Test worker] c.e.s.S.EstrategiaMetodoIndicesTest      : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-06-23T17:46:34.274-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-23T17:46:34.274-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-06-23T17:46:34.285-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.articulos.ArticuloRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.285-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.articulos.FamiliaArticuloRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.286-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.DemandaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.286-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.DetalleOrdenDeCompraRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.286-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.OrdenDeCompraRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.286-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.ProveedorArticuloRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.286-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.orden_de_compra.ProveedorRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.287-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.PrediccionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.287-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.ventas.ClienteRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.288-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.ventas.LineaVentaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.288-03:00  INFO 8412 --- [stonks] [    Test worker] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.example.stonks.repositories.ventas.VentaRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-06-23T17:46:34.288-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 JDBC repository interfaces.
+2024-06-23T17:46:34.292-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-23T17:46:34.293-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-06-23T17:46:34.326-03:00  INFO 8412 --- [stonks] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 11 JPA repository interfaces.
+2024-06-23T17:46:34.399-03:00  INFO 8412 --- [stonks] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-06-23T17:46:34.401-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-06-23T17:46:34.413-03:00  INFO 8412 --- [stonks] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-06-23T17:46:34.414-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-06-23T17:46:34.416-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:test user=ROOT
+2024-06-23T17:46:34.416-03:00  INFO 8412 --- [stonks] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-06-23T17:46:34.417-03:00  WARN 8412 --- [stonks] [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-06-23T17:46:34.509-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.example.stonks.entities.orden_de_compra.OrdenDeCompra (class must be instantiated by Interceptor)
+2024-06-23T17:46:34.553-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.m.i.EntityInstantiatorPojoStandard   : HHH000182: No default (no-argument) constructor for class: com.example.stonks.entities.demanda.Prediccion (class must be instantiated by Interceptor)
+2024-06-23T17:46:34.573-03:00  INFO 8412 --- [stonks] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: create table articulo (id bigint generated by default as identity, fecha_baja timestamp(6), cod varchar(255), costo_almacenamiento float(24), inventario_maximo integer, lote_optimo integer, nombre varchar(255), precio_venta integer, punto_pedido integer, stock_actual integer, stock_seguridad integer, id_familia_articulo bigint, id_proveedor_predeterminado bigint, primary key (id))
+Hibernate: create table cliente (id bigint generated by default as identity, fecha_baja timestamp(6), cuit_cliente varchar(255), nombre_cliente varchar(255), nro_cliente integer, primary key (id))
+Hibernate: create table demanda (id bigint generated by default as identity, fecha_baja timestamp(6), año integer not null, cantidad float(24) not null, mes integer not null, id_articulo bigint, primary key (id))
+Hibernate: create table detalle_orden_de_compra (id bigint generated by default as identity, fecha_baja timestamp(6), cantidad integer not null, sub_total float(53), total_detalle float(53) not null, valor_articulo float(53) not null, id_articulo bigint, id_orden_de_compra bigint, primary key (id))
+Hibernate: create table familia_articulo (id bigint generated by default as identity, fecha_baja timestamp(6), cod integer, modelo_inventario enum ('Intervalo_Fijo','Lote_Fijo'), nombre varchar(255), primary key (id))
+Hibernate: create table linea_venta (id bigint generated by default as identity, fecha_baja timestamp(6), cantidad integer, contador_linea_venta integer, precio_unitario float(53), id_articulo bigint, id_venta bigint, primary key (id))
+Hibernate: create table orden_de_compra (id bigint generated by default as identity, fecha_baja timestamp(6), costo_envio float(53), costo_total float(53), estado_actual tinyint check (estado_actual between 0 and 5), fecha_creacion timestamp(6), fecha_llegada timestamp(6), nro_orden_de_compra integer not null, id_proveedor bigint, primary key (id))
+Hibernate: create table prediccion (id bigint generated by default as identity, fecha_baja timestamp(6), año integer not null, cantidad_predecida float(24) not null, mes integer not null, id_articulo bigint, primary key (id))
+Hibernate: create table proveedor (id bigint generated by default as identity, fecha_baja timestamp(6), cod_proveedor integer, costo_envio_proveedor float(53), dias_demora_entrega_proveedor integer, email_proveedor varchar(255), nombre_proveedor varchar(255), primary key (id))
+Hibernate: create table proveedor_articulo (id bigint generated by default as identity, fecha_baja timestamp(6), precio float(53), articulo_id bigint, id_proveedor bigint, primary key (id))
+Hibernate: create table venta (id bigint generated by default as identity, fecha_baja timestamp(6), fecha_venta date, nro_venta integer, id_cliente bigint, primary key (id))
+Hibernate: alter table if exists articulo add constraint FKpfrftj5u5ss9l5tsflblrbfxl foreign key (id_familia_articulo) references familia_articulo
+Hibernate: alter table if exists articulo add constraint FKsph8sbgrid2uyj3dkx7sh7pgb foreign key (id_proveedor_predeterminado) references proveedor
+Hibernate: alter table if exists demanda add constraint FKapvcv1ca14ltu6py82qj9r2au foreign key (id_articulo) references articulo
+Hibernate: alter table if exists detalle_orden_de_compra add constraint FKea6k9u56tvhiiyk05cfnx6wcs foreign key (id_articulo) references articulo
+Hibernate: alter table if exists detalle_orden_de_compra add constraint FK9m7js4nn04ubbi19it7ymdjy7 foreign key (id_orden_de_compra) references orden_de_compra
+Hibernate: alter table if exists linea_venta add constraint FK2fslsq7vtch9iy07narrg5tqb foreign key (id_articulo) references articulo
+Hibernate: alter table if exists linea_venta add constraint FKstbqx9nuuxsipwobrae5bvqfh foreign key (id_venta) references venta
+Hibernate: alter table if exists orden_de_compra add constraint FKd70kmcb8s2a2oumua7cal85j5 foreign key (id_proveedor) references proveedor
+Hibernate: alter table if exists prediccion add constraint FKn7f5cmwmb80of76aaiimpwv6t foreign key (id_articulo) references articulo
+Hibernate: alter table if exists proveedor_articulo add constraint FKjob79ysyvn7t7pile5bcov09 foreign key (articulo_id) references articulo
+Hibernate: alter table if exists proveedor_articulo add constraint FKp5wev2i2cou5gk4h4dpx08rb foreign key (id_proveedor) references proveedor
+Hibernate: alter table if exists venta add constraint FKsor2qmi3thao7a8or49vlohp9 foreign key (id_cliente) references cliente
+2024-06-23T17:46:34.599-03:00  INFO 8412 --- [stonks] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-06-23T17:46:34.782-03:00  WARN 8412 --- [stonks] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-06-23T17:46:34.922-03:00  INFO 8412 --- [stonks] [    Test worker] c.e.s.S.EstrategiaMetodoIndicesTest      : Started EstrategiaMetodoIndicesTest in 0.851 seconds (process running for 6.833)
+Hibernate: insert into familia_articulo (cod,fecha_baja,modelo_inventario,nombre,id) values (?,?,?,?,default)
+Hibernate: insert into proveedor (cod_proveedor,costo_envio_proveedor,dias_demora_entrega_proveedor,email_proveedor,fecha_baja,nombre_proveedor,id) values (?,?,?,?,?,?,default)
+Hibernate: insert into articulo (cod,costo_almacenamiento,id_familia_articulo,fecha_baja,inventario_maximo,lote_optimo,nombre,precio_venta,id_proveedor_predeterminado,punto_pedido,stock_actual,stock_seguridad,id) values (?,?,?,?,?,?,?,?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Hibernate: insert into demanda (id_articulo,año,cantidad,fecha_baja,mes,id) values (?,?,?,?,?,default)
+Error: Cannot invoke &quot;com.example.stonks.repositories.PrediccionRepository.getDemandasByAño(java.lang.Long, int)&quot; because &quot;this.prediccionRepository&quot; is null
+Error cometido: 67.678215
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.8</a> at 23 jun. 2024 17:46:35</p>
+</div>
+</div>
+</body>
+</html>

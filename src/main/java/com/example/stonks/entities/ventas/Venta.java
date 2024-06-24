@@ -26,6 +26,7 @@ public class Venta extends Base {
     private Cliente cliente;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_venta")
     private List<LineaVenta> lineasVenta = new ArrayList<>();
 
     @Column(name = "fecha_venta")

@@ -1,5 +1,6 @@
 package com.example.stonks.services.demanda;
 
+import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.demanda.Prediccion;
 import com.example.stonks.entities.orden_de_compra.*;
 import com.example.stonks.repositories.BaseRepository;
@@ -9,15 +10,14 @@ import com.example.stonks.services.demanda.estrategiaPredecirDemanda.DTOListaPre
 import com.example.stonks.services.demanda.estrategiaPredecirDemanda.DTOPrediccion;
 import com.example.stonks.services.demanda.estrategiaPredecirDemanda.EstrategiaPredecirDemanda;
 import com.example.stonks.services.demanda.estrategiaPredecirDemanda.FactoriaEstrategiaPredecirDemanda;
-import jakarta.persistence.EntityManager;
+import com.example.stonks.services.orden_de_compra.OrdenDeCompraServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> implements PrediccionService {
@@ -26,14 +26,15 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
     private final PrediccionRepository prediccionRepository;
 
     @Autowired
-    private final EntityManager entityManager;
+    private final OrdenDeCompraServiceImpl ordenDeCompraServiceImpl;
+
 
     public PrediccionServiceImpl(
             BaseRepository<Prediccion, Long> baseRepository,
             PrediccionRepository prediccionRepository,
-            EntityManager entityManager) {
+            OrdenDeCompraServiceImpl ordenDeCompraService) {
         super(baseRepository);
-        this.entityManager = entityManager;
+        this.ordenDeCompraServiceImpl = ordenDeCompraService;
         this.prediccionRepository = prediccionRepository;
     }
 
@@ -57,67 +58,65 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
             listaPredicciones.sort(Comparator.comparing(DTOListaPrediccion::getErrorCometido));
             DTOListaPrediccion prediccionGanadora = listaPredicciones.get(0);
 
-            List<Prediccion> listaPrediccionRetorno = new ArrayList<Prediccion>();
+            List<Integer> listaMeses = prediccionGanadora.getListaPrediccion()
+                    .stream()
+                    .map(DTOPrediccion::getMes)
+                    .distinct()
+                    .toList();
 
-            for (DTOPrediccion prediccion : prediccionGanadora.getListaPrediccion()) {
-                //TODO: pisar la predicción previa si ya existía para ese periodo
-                //Mostrar cuál predicción persistir
-                Prediccion prediccionPersistible = Prediccion.builder()
-                        .año(prediccion.getAño())
-                        .mes(prediccion.getMes())
-                        .cantidadPredecida(prediccion.getValorPrediccion())
+            List<Integer> listaAños = prediccionGanadora.getListaPrediccion()
+                    .stream()
+                    .map(DTOPrediccion::getAño)
+                    .distinct()
+                    .toList();
+
+            ArrayList<Prediccion> prediccionesExistentes = this.prediccionRepository.findByMesInAndAñoInAndArticulo(
+                    listaMeses,
+                    listaAños,
+                    dtoIngresoParametrosDemanda.getArticulo()
+            );
+
+            //Armamos un map que contiene como clave la dupla mes-año y como valor la predicción
+            Map<String, DTOPrediccion> nuevasPrediccionesMap = prediccionGanadora.getListaPrediccion().stream()
+                    .collect(Collectors.toMap(p -> p.getMes() + "-" + p.getAño(), p -> p));
+
+            //Si ya existía la predicción anteriormente, la borramos
+            prediccionesExistentes.forEach(prediccionExistente -> {
+                String key = prediccionExistente.getMes() + "-" + prediccionExistente.getAño();
+                if (nuevasPrediccionesMap.containsKey(key)) {
+                    prediccionRepository.delete(prediccionExistente);
+                }
+            });
+
+            List<Prediccion> prediccionesParaPersistir = new ArrayList<>();
+
+            for (DTOPrediccion dto : prediccionGanadora.getListaPrediccion()) {
+                Prediccion entity = Prediccion.builder()
+                        .mes(dto.getMes())
+                        .año(dto.getAño())
                         .articulo(dtoIngresoParametrosDemanda.getArticulo())
                         .build();
-                listaPrediccionRetorno.add(prediccionPersistible);
-                this.prediccionRepository.save(prediccionPersistible);
+
+                prediccionesParaPersistir.add(entity);
             }
 
-            List<OrdenDeCompra> ordenesPendientes = this.prediccionRepository.getOrdenDeCompraPendienteByArticulo(
-                                                                dtoIngresoParametrosDemanda.getArticulo().getId());
+            this.prediccionRepository.saveAll(prediccionesParaPersistir);
 
-            DetalleOrdenDeCompra detalleOrdenDeCompra = null;
+            float demandaEsperada = prediccionGanadora.getListaPrediccion()
+                                    .get(dtoIngresoParametrosDemanda.getCantidadPeriodosParaError())
+                                    .getValorPrediccion();
 
-            if (ordenesPendientes.isEmpty()) {
-
-                Proveedor proveedor = dtoIngresoParametrosDemanda.getArticulo().getPredeterminado();
-                Double costoEnvio = (double) proveedor.getCostoEnvio();
-
-                List<ProveedorArticulo> proveedorArticulos = proveedor.getProveedorArticulos().stream()
-                        .filter(proveedorArticulo -> proveedorArticulo.getArticulo().equals(dtoIngresoParametrosDemanda.getArticulo()))
-                        .toList();
-                if (proveedorArticulos.isEmpty()) throw new Exception("Revisar proveedor predeterminado, no ofrece el articulo deseado");
-
-                Double costo = proveedorArticulos.get(0).getPrecio();
-
-                int cantidadRequerida = (int) prediccionGanadora.getListaPrediccion()
-                        .stream()
-                        .mapToDouble(DTOPrediccion::getValorPrediccion)
-                        .reduce(0, Double::sum);
-
-                detalleOrdenDeCompra = DetalleOrdenDeCompra.builder()
-                        .articulo(dtoIngresoParametrosDemanda.getArticulo())
-                        .cantidad(cantidadRequerida)
-                        .subTotal(cantidadRequerida * costo)
-                        .build();
-
-
-                OrdenDeCompra ordenDeCompra = OrdenDeCompra.builder()
-                        .fechaCreacion(new Date(System.currentTimeMillis()))
-                        .estadoActual(EstadoODC.SIN_CONFIRMAR)
-                        .costoEnvio(costoEnvio)
-                        .costoTotal(costo * cantidadRequerida)
-                        .proveedor(proveedor)
-                        .build();
-
-                ordenDeCompra.getDetalles().add(detalleOrdenDeCompra);
-
-                this.entityManager.persist(ordenDeCompra);
-                this.entityManager.flush();
-            }
+            Articulo articulo = dtoIngresoParametrosDemanda.getArticulo();
+            OrdenDeCompra ordenDeCompra = null;
+            if (articulo.getStockActual() - demandaEsperada< articulo.getPuntoPedido())
+                ordenDeCompra = this.ordenDeCompraServiceImpl.generarOrdenDeCompra(
+                dtoIngresoParametrosDemanda.getArticulo().getId(),
+                dtoIngresoParametrosDemanda.getArticulo().getPredeterminado().getId()
+            );
 
             DTORetornoPrediccion dtoRetornoPrediccion = DTORetornoPrediccion.builder()
-                    .listaPrediccion(listaPrediccionRetorno)
-                    .detalleOrdenDeCompra(detalleOrdenDeCompra).build();
+                    .listaPrediccion(prediccionesParaPersistir)
+                    .ordenDeCompra(ordenDeCompra).build();
 
             return dtoRetornoPrediccion;
 

@@ -9,9 +9,10 @@ import java.io.Serializable;
 
 @Entity
 @Data
+@Table(name = "proveedor_articulo")
 public class ProveedorArticulo extends Base {
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "articulo_id")
     private Articulo articulo;
 

@@ -13,6 +13,7 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "proveedor")
 public class Proveedor extends Base {
 
     @Column(name = "cod_proveedor")
@@ -24,24 +25,13 @@ public class Proveedor extends Base {
     @Column(name = "email_proveedor")
     private String email;
 
-    /*@Column(name = "cantidad_articulos_minimos_proveedor")
-    private int cantArticulosMinimos;
-
-    @Column(name = "costo_minimo_proveedor")
-    private int costoMinimo;
-
-    @Column(name = "dias_demora_entrega_proveedor")
-    private int diasDemoraEntrega;
-
-    @Column(name = "cantidad_articulos_maximos_proveedor")
-    private int cantArticulosMaximos;*/
-
     @Column(name = "dias_demora_entrega_proveedor")
     private int diasDemoraEntrega;
 
     @Column(name = "costo_envio_proveedor")
     private double costoEnvio;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @JoinColumn(name = "id_proveedor")
     private List<ProveedorArticulo> proveedorArticulos;
 }

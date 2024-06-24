@@ -8,6 +8,8 @@ import com.example.stonks.repositories.orden_de_compra.OrdenDeCompraRepository;
 import com.example.stonks.services.BaseServiceImpl;
 import com.example.stonks.services.articulos.ArticuloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -15,17 +17,13 @@ import java.util.Optional;
 
 @Service
 public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Long> implements OrdenDeCompraService{
-    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository, ArticuloServiceImpl articuloService, ProveedorArticuloService proveedorArticuloService, DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService, ProveedorServiceImpl proveedorService, OrdenDeCompraRepository ordenDeCompraRepository) {
-        super(baseRepository);
-        this.articuloService = articuloService;
-        this.proveedorArticuloService = proveedorArticuloService;
-        this.detalleOrdenDeCompraService = detalleOrdenDeCompraService;
-        this.proveedorService = proveedorService;
-        this.ordenDeCompraRepository = ordenDeCompraRepository;
-    }
 
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
+
+    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository) {
+        super(baseRepository);
+    }
 
 
     @Autowired
@@ -45,7 +43,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
         return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
     }
 
-    public void generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
+    public OrdenDeCompra generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
 
         Articulo articulo = articuloService.findById(idArticulo);
 
@@ -74,7 +72,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
         }
         ordenDeCompra.getDetalles().add(detalleOrdenDeCompra);
 
-        ordenDeCompraRepository.save(ordenDeCompra);
+        return this.ordenDeCompraRepository.save(ordenDeCompra);
 
     }
 
@@ -116,6 +114,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
 
     }
-
-
+    public Page<OrdenDeCompra> getByState(EstadoODC estadoODC, Pageable pageable) throws Exception {
+        return ordenDeCompraRepository.getByState(estadoODC, pageable);
+    }
 }
