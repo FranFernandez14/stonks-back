@@ -39,9 +39,11 @@ public class OrdenDeCompraController extends BaseControllerImpl<OrdenDeCompra, O
         ordenDeCompraService.generarOrdenDeCompra(generarOrdenDTO.getIdArticulo(), generarOrdenDTO.getIdProveedor());
     }
 
-    @GetMapping("getByState/{idEstado}")
-    public Page<OrdenDeCompra> getByState(@PathVariable Long idEstado, Pageable pageable) throws Exception{
-        return ordenDeCompraService.getByState(EstadoODC.fromNumero(idEstado.intValue()), pageable);
+    @GetMapping("/getByState/{estadoODC}")
+    public Page<OrdenDeCompra> getByState(@PathVariable String estadoODC, Pageable pageable) throws Exception {
+        EstadoODC estado = EstadoODC.fromEstado(estadoODC);
+        return ordenDeCompraService.getByState(estado, pageable);
     }
+
 
 }

@@ -21,28 +21,27 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo$ArticuloBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo$ArticuloBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/OrdenDeCompra$OrdenDeCompraBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/OrdenDeCompra$OrdenDeCompraBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/EstadoODC.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/EstadoODC.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/Proveedor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/PrediccionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/PrediccionServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EstrategiaMetodoIndices.class.uniqueId7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EstrategiaPMSuavizado.class.uniqueId4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EstrategiaPromedioMovil.class.uniqueId5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraController.class.uniqueId1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraRepository.class.uniqueId35" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraServiceImpl.class.uniqueId30" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraServiceImpl.class.uniqueId6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionController.class.uniqueId2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionRepository.class.uniqueId9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionServiceImpl.class.uniqueId0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Proveedor.class.uniqueId20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/VentaController.class.uniqueId3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/VentaServiceImpl.class.uniqueId8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DTORetornoPrediccion$DTORetornoPrediccionBuilder.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/DTORetornoPrediccion.class.uniqueId12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompra$OrdenDeCompraBuilder.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompra.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraController.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraRepository.class.uniqueId11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraService.class.uniqueId9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraServiceImpl.class.uniqueId8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionService.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionServiceImpl.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/VentaController.class.uniqueId10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/VentaServiceImpl.class.uniqueId0" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/EstadoODC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/EstadoODC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/orden_de_compra/OrdenDeCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/orden_de_compra/OrdenDeCompraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/orden_de_compra/OrdenDeCompraRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" afterDir="false" />
 =======
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTOIngresoParametrosDemanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTOIngresoParametrosDemanda.java" afterDir="false" />
@@ -254,6 +253,7 @@
       <updated>1718900377786</updated>
       <workItem from="1719172082045" duration="334000" />
       <workItem from="1719172438893" duration="2735000" />
+      <workItem from="1719268836961" duration="9686000" />
     </task>
     <servers />
   </component>

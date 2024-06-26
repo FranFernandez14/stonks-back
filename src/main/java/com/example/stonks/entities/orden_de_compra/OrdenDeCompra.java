@@ -22,7 +22,7 @@ public class OrdenDeCompra extends Base {
     private Double costoTotal;
     private Double costoEnvio;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private EstadoODC estadoActual;
 
     @ManyToOne()
