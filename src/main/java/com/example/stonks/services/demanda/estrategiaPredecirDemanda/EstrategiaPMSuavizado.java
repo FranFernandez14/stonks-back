@@ -88,7 +88,7 @@ public class EstrategiaPMSuavizado implements EstrategiaPredecirDemanda{
                 //Cuando se agoten las demandas reales, empiezo a usar predicciones
                 if (i >= dtoIngresoParametrosDemanda.getCantidadPeriodosParaError()) {
                     listaDemandasCalculo.add(Demanda.builder().
-                                    cantidad(cantidadPredecida).
+                                    cantidad((int) cantidadPredecida).
                                     mes(mes).
                                     año(año).
                                     build());

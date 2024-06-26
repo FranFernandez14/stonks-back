@@ -69,9 +69,12 @@ public class EstrategiaMetodoIndices implements EstrategiaPredecirDemanda{
                     dtoParametrosAñoAnterior.getArticulo().getId(),
                     añoHastaParaError);
 
-            float demandaTotalAñoAnterior = listaDemandasAñoAnterior.stream()
-                    .map(Demanda::getCantidad)
-                    .reduce(0f, Float::sum);
+            Integer acc = (int) 0f;
+            for (Demanda demanda : listaDemandasAñoAnterior) {
+                Integer cantidad = demanda.getCantidad();
+                acc = acc + cantidad;
+            }
+            float demandaTotalAñoAnterior = acc;
 
             dtoParametrosAñoAnterior.setDemandaAñoAPredecir(demandaTotalAñoAnterior);
 

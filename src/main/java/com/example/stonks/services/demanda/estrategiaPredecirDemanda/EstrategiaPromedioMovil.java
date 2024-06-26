@@ -72,7 +72,7 @@ public class EstrategiaPromedioMovil implements EstrategiaPredecirDemanda{
                 if (i >= cantPeriodosParaError) {
                 // Añadimos la prediccion a la lista para incluirla en el calculo de la proxima iteracion
                     Demanda demandaPredicha = Demanda.builder()
-                                            .cantidad(promedioMovilPonderado)
+                                            .cantidad((int) promedioMovilPonderado)
                                             .año(año)
                                             .mes(mes)
                                             .build();
