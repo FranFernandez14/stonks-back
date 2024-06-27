@@ -1,11 +1,13 @@
 package com.example.stonks.services.orden_de_compra;
 
+import com.example.stonks.dtos.orden_de_compra.ProveedorArticuloDTO;
 import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.orden_de_compra.Proveedor;
 import com.example.stonks.entities.orden_de_compra.ProveedorArticulo;
 import com.example.stonks.repositories.BaseRepository;
 import com.example.stonks.repositories.orden_de_compra.ProveedorArticuloRepository;
 import com.example.stonks.services.BaseServiceImpl;
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +24,9 @@ public class ProveedorArticuloServiceImpl extends BaseServiceImpl<ProveedorArtic
 
     public ProveedorArticulo getProveedorArticuloByProveedorAndArticulo(Proveedor proveedor, Articulo articulo){
         return proveedorArticuloRepository.findProveedorArticuloByProveedorAndArticulo(proveedor.getId(), articulo.getId());
+    }
+
+    public List<ProveedorArticuloDTO> getProveedorArticulobyArticulo(Long idArticulo){
+        return proveedorArticuloRepository.findProveedorArticuloDTOByArticuloId(idArticulo);
     }
 }
