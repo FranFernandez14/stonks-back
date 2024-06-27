@@ -72,7 +72,6 @@ public class EstrategiaMetodoIndicesTest {
                 .puntoPedido(50)
                 .precioVenta(40)
                 .inventarioMaximo(300)
-                .costoAlmacenamiento(540)
                 .familiaArticulo(familiaArticulo)
                 .predeterminado(proveedor)
                 .build();

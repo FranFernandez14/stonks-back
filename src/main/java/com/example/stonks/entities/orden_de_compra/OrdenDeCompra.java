@@ -14,6 +14,7 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "orden_de_compra")
 public class OrdenDeCompra extends Base {
 
     private int nroOrdenDeCompra;
@@ -28,7 +29,6 @@ public class OrdenDeCompra extends Base {
     @ManyToOne()
     @JoinColumn(name = "id_proveedor")
     private Proveedor proveedor;
-
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_orden_de_compra")

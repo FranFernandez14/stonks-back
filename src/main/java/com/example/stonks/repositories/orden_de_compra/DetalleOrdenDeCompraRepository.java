@@ -18,7 +18,4 @@ public interface DetalleOrdenDeCompraRepository extends BaseRepository<DetalleOr
     @Query(value = "SELECT * FROM detalle_orden_de_compra WHERE id_orden_de_compra = :ordenDeCompraId AND id_articulo = :articuloId", nativeQuery = true)
     Optional<DetalleOrdenDeCompra> findByOrdenDeCompraIdAndArticuloId(@Param("ordenDeCompraId") Long ordenDeCompraId, @Param("articuloId") Long articuloId);
 
-    @Query("SELECT d FROM detalle_orden_de_Compra d WHERE d.articulo = :articulo AND d.ordenDeCompra.estadoActual IN :estados")
-    List<DetalleOrdenDeCompra> findByArticuloAndOrdenDeCompraEstados(@Param("articulo") Articulo articulo, @Param("estados") List<EstadoODC> estados);
-
 }

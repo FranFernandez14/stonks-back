@@ -25,7 +25,7 @@ public class OrdenDeCompraController extends BaseControllerImpl<OrdenDeCompra, O
     }
 
     @PutMapping("/cambiarEstado/{id}")
-    public void cambiarEstado(@PathVariable Long id ){
+    public void cambiarEstado(@PathVariable Long id ) throws Exception {
         ordenDeCompraService.cambiarEstadoOrdenDeCompra(id);
     }
 

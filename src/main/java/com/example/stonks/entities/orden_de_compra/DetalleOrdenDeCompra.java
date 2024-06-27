@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "detalle_orden_de_compra")
 public class DetalleOrdenDeCompra extends Base {
 
 

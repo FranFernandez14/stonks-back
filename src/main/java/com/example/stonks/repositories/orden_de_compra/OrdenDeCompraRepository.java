@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import java.util.*;
 
 @Repository
 public interface OrdenDeCompraRepository extends BaseRepository<OrdenDeCompra, Long> {
@@ -19,4 +20,11 @@ public interface OrdenDeCompraRepository extends BaseRepository<OrdenDeCompra, L
     @Query("SELECT o FROM OrdenDeCompra o WHERE o.estadoActual = :estadoActual")
     Page<OrdenDeCompra> getByState(@Param("estadoActual") EstadoODC estadoODC, Pageable pageable);
 
+
+    @Query("SELECT DISTINCT o FROM OrdenDeCompra o JOIN o.detalles d WHERE d.articulo.id = :articuloId " +
+            "AND o.estadoActual IN (:estados)")
+    List<OrdenDeCompra> getOrderByArticuloAndEstados(
+            @Param("articuloId") Long articuloId,
+            @Param("estados") List<EstadoODC> estados
+    );
 }
