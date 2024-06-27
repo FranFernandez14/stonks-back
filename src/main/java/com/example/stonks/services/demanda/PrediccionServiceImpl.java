@@ -13,10 +13,8 @@ import com.example.stonks.services.demanda.estrategiaPredecirDemanda.FactoriaEst
 import com.example.stonks.services.orden_de_compra.OrdenDeCompraServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,26 +26,52 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
     @Autowired
     private final OrdenDeCompraServiceImpl ordenDeCompraServiceImpl;
 
+    @Autowired
+    private final FactoriaEstrategiaPredecirDemanda factoriaEstrategiaPredecirDemanda;
+
 
     public PrediccionServiceImpl(
             BaseRepository<Prediccion, Long> baseRepository,
             PrediccionRepository prediccionRepository,
-            OrdenDeCompraServiceImpl ordenDeCompraService) {
+            OrdenDeCompraServiceImpl ordenDeCompraService,
+            FactoriaEstrategiaPredecirDemanda factoriaEstrategiaPredecirDemanda) {
         super(baseRepository);
         this.ordenDeCompraServiceImpl = ordenDeCompraService;
         this.prediccionRepository = prediccionRepository;
+        this.factoriaEstrategiaPredecirDemanda = factoriaEstrategiaPredecirDemanda;
+    }
+
+    @Override
+    //Implementa baja lógica en vez de fisica
+    public boolean delete(Long id) throws Exception {
+
+        Optional<Prediccion> prediccion = this.prediccionRepository.findById(id);
+
+        if (prediccion.isEmpty()) {
+            return false;
+        } else {
+            prediccion.get().setFechaBaja(new Date());
+            this.prediccionRepository.save(prediccion.get());
+            return true;
+        }
     }
 
     @Override
     public DTORetornoPrediccion predecirDemanda(DTOIngresoParametrosDemanda dtoIngresoParametrosDemanda) throws Exception{
         try {
+
             if (dtoIngresoParametrosDemanda.getAlfa() < 0 ||
                     dtoIngresoParametrosDemanda.getAlfa() > 1)
                 throw new Exception("Alfa debe estar entre 0 y 1");
 
             if (dtoIngresoParametrosDemanda.getCiclos() < 3 ) throw new Exception("La cantidad de ciclos debe ser al menos 3");
 
-            List<EstrategiaPredecirDemanda> listaEstrategias = FactoriaEstrategiaPredecirDemanda.getInstance().obtenerEstrategias();
+            if (dtoIngresoParametrosDemanda.getPonderacion().size() > dtoIngresoParametrosDemanda.getCantidadPeriodosParaError())
+                throw new Exception("Demasiadas ponderaciones para la cantidad de periodos a predecir");
+
+            if (dtoIngresoParametrosDemanda.getPonderacion().isEmpty()) throw new Exception("No se envio ninguna ponderacion");
+
+            List<EstrategiaPredecirDemanda> listaEstrategias = this.factoriaEstrategiaPredecirDemanda.obtenerEstrategias();
 
             List<DTOListaPrediccion> listaPredicciones = new ArrayList<DTOListaPrediccion>();
 
@@ -55,16 +79,19 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
                 listaPredicciones.add(estrategia.predecirDemanda(dtoIngresoParametrosDemanda));
             }
 
-            listaPredicciones.sort(Comparator.comparing(DTOListaPrediccion::getErrorCometido));
-            DTOListaPrediccion prediccionGanadora = listaPredicciones.get(0);
+            Optional<DTOListaPrediccion> prediccionGanadora = listaPredicciones.stream()
+                    .filter(DTOListaPrediccion::isSePredijo) // Filtrar por sePredijo == true
+                    .min(Comparator.comparing(DTOListaPrediccion::getErrorCometido)); // Encontrar el de menor errorCometido
 
-            List<Integer> listaMeses = prediccionGanadora.getListaPrediccion()
+            if (prediccionGanadora.isEmpty()) throw new Exception("No se pudo realizar ninguna prediccion");
+
+            List<Integer> listaMeses = prediccionGanadora.get().getListaPrediccion()
                     .stream()
                     .map(DTOPrediccion::getMes)
                     .distinct()
                     .toList();
 
-            List<Integer> listaAños = prediccionGanadora.getListaPrediccion()
+            List<Integer> listaAños = prediccionGanadora.get().getListaPrediccion()
                     .stream()
                     .map(DTOPrediccion::getAño)
                     .distinct()
@@ -77,21 +104,26 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
             );
 
             //Armamos un map que contiene como clave la dupla mes-año y como valor la predicción
-            Map<String, DTOPrediccion> nuevasPrediccionesMap = prediccionGanadora.getListaPrediccion().stream()
+            Map<String, DTOPrediccion> nuevasPrediccionesMap = prediccionGanadora.get().getListaPrediccion().stream()
                     .collect(Collectors.toMap(p -> p.getMes() + "-" + p.getAño(), p -> p));
 
             //Si ya existía la predicción anteriormente, la borramos
             prediccionesExistentes.forEach(prediccionExistente -> {
                 String key = prediccionExistente.getMes() + "-" + prediccionExistente.getAño();
                 if (nuevasPrediccionesMap.containsKey(key)) {
-                    prediccionRepository.delete(prediccionExistente);
+                    try {
+                        this.delete(prediccionExistente.getId());
+                    } catch (Exception e) {
+                        throw new RuntimeException(e.getMessage());
+                    }
                 }
             });
 
             List<Prediccion> prediccionesParaPersistir = new ArrayList<>();
 
-            for (DTOPrediccion dto : prediccionGanadora.getListaPrediccion()) {
+            for (DTOPrediccion dto : prediccionGanadora.get().getListaPrediccion()) {
                 Prediccion entity = Prediccion.builder()
+                        .cantidadPredecida(dto.getValorPrediccion())
                         .mes(dto.getMes())
                         .año(dto.getAño())
                         .articulo(dtoIngresoParametrosDemanda.getArticulo())
@@ -102,20 +134,18 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
 
             this.prediccionRepository.saveAll(prediccionesParaPersistir);
 
-            float demandaEsperada = prediccionGanadora.getListaPrediccion()
+            float demandaEsperada = prediccionGanadora.get().getListaPrediccion()
                                     .get(dtoIngresoParametrosDemanda.getCantidadPeriodosParaError())
                                     .getValorPrediccion();
 
             Articulo articulo = dtoIngresoParametrosDemanda.getArticulo();
             OrdenDeCompra ordenDeCompra = null;
-            if (articulo.getStockActual() - demandaEsperada< articulo.getPuntoPedido())
-                ordenDeCompra = this.ordenDeCompraServiceImpl.generarOrdenDeCompra(
-                dtoIngresoParametrosDemanda.getArticulo().getId(),
-                dtoIngresoParametrosDemanda.getArticulo().getPredeterminado().getId()
-            );
+            boolean seGeneraOrden = false;
 
             DTORetornoPrediccion dtoRetornoPrediccion = DTORetornoPrediccion.builder()
                     .listaPrediccion(prediccionesParaPersistir)
+                    .estrategiaGanadora(prediccionGanadora.get().getEstrategia())
+                    .seGeneraOrden(seGeneraOrden)
                     .ordenDeCompra(ordenDeCompra).build();
 
             return dtoRetornoPrediccion;

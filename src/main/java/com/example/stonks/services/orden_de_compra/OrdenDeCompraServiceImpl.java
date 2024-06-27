@@ -12,19 +12,27 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Long> implements OrdenDeCompraService{
+    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository, ArticuloServiceImpl articuloService, ProveedorArticuloService proveedorArticuloService, DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService, ProveedorServiceImpl proveedorService, OrdenDeCompraRepository ordenDeCompraRepository) {
+        super(baseRepository);
+        this.articuloService = articuloService;
+        this.proveedorArticuloService = proveedorArticuloService;
+        this.detalleOrdenDeCompraService = detalleOrdenDeCompraService;
+        this.proveedorService = proveedorService;
+        this.ordenDeCompraRepository = ordenDeCompraRepository;
+    }
 
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
 
-    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository) {
-        super(baseRepository);
+
+    public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
+        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
     }
 
 
@@ -40,15 +48,6 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
     @Autowired
     private ProveedorServiceImpl proveedorService;
-
-    public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
-        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
-    }
-
-    @Override
-    public List<OrdenDeCompra> getOrdenesByArticuloAndEstados(Long articuloId, List<EstadoODC> estados) {
-        return List.of();
-    }
 
     public OrdenDeCompra generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
 
@@ -101,28 +100,13 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
     }
 
-    public void cambiarEstadoOrdenDeCompra(Long idOrdenDeCompra) throws Exception {
+    public void cambiarEstadoOrdenDeCompra(Long idOrdenDeCompra){
 
         OrdenDeCompra ordenDeCompra = ordenDeCompraRepository.getReferenceById(idOrdenDeCompra);
 
-        EstadoODC estadoActual = ordenDeCompra.getEstadoActual();
-
-        if (estadoActual == EstadoODC.SIN_CONFIRMAR) {
-            ordenDeCompra.setEstadoActual(EstadoODC.CONFIRMADA);
-        } else if (estadoActual == EstadoODC.CONFIRMADA) {
-            ordenDeCompra.setEstadoActual(EstadoODC.ACEPTADA);
-        } else if (estadoActual == EstadoODC.ACEPTADA) {
-            ordenDeCompra.setEstadoActual(EstadoODC.EN_CAMINO);
-        } else if (estadoActual == EstadoODC.EN_CAMINO) {
-            ordenDeCompra.setEstadoActual(EstadoODC.RECIBIDA);
-            for ( DetalleOrdenDeCompra detalle : ordenDeCompra.getDetalles()) {
-                Articulo articulo = detalle.getArticulo();
-                articulo.setStockActual(articulo.getStockActual() + (detalle.getCantidad()));
-                articuloService.save(articulo);
-            }
+        if (ordenDeCompra.getEstadoActual().getNumero()>1 && ordenDeCompra.getEstadoActual().getNumero()<5){
+            ordenDeCompra.setEstadoActual(EstadoODC.fromNumero(ordenDeCompra.getEstadoActual().getNumero()+1));
         }
-
-
         ordenDeCompraRepository.save(ordenDeCompra);
     }
 
@@ -138,9 +122,10 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
     }
     public Page<OrdenDeCompra> getByState(EstadoODC estadoODC, Pageable pageable) throws Exception {
         return ordenDeCompraRepository.getByState(estadoODC, pageable);
-
-
     }
 
-
+    @Override
+    public List<OrdenDeCompra> getOrdenesByArticuloAndEstados(Long articuloId, List<EstadoODC> estados) {
+        return List.of();
+    }
 }

@@ -18,14 +18,5 @@ public class FamiliaArticuloController extends BaseControllerImpl<FamiliaArticul
     @Autowired
     private FamiliaArticuloServiceImpl familiaArticuloService;
 
-    @PostMapping
-    public FamiliaArticulo crearFamiliaArticulo(
-            @RequestParam String nombre,
-            @RequestParam ModeloInventario modeloInventario) {
-        try {
-            return familiaArticuloService.crearFamiliaArticulo(nombre, modeloInventario);
-        } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
-        }
-    }
+
 }

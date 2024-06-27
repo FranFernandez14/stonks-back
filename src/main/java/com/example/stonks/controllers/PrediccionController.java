@@ -15,6 +15,7 @@ public class PrediccionController extends BaseControllerImpl<Prediccion, Predicc
     @PostMapping(path = "/predecir")
     public ResponseEntity<?> predecirDemanda(@RequestBody DTOIngresoParametrosDemanda entity){
         try{
+            System.out.println("Hola desde el controller");
             return ResponseEntity.status(HttpStatus.OK).body(this.servicio.predecirDemanda(entity));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + e.getMessage() + "\"");

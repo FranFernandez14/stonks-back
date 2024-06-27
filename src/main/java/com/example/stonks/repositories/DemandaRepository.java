@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Optional;
 
 @Repository
 public interface DemandaRepository extends BaseRepository<Demanda, Long> {
@@ -32,6 +31,4 @@ public interface DemandaRepository extends BaseRepository<Demanda, Long> {
                                                  @Param(value = "mes") int mes,
                                                  @Param(value = "año") int año)
                                                     throws Exception;
-
-
 }

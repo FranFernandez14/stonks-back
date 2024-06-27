@@ -14,5 +14,4 @@ public interface OrdenDeCompraService extends BaseService<OrdenDeCompra, Long> {
 
     public List<OrdenDeCompra> getOrdenesByArticuloAndEstados(Long articuloId, List<EstadoODC> estados);
 
-
 }

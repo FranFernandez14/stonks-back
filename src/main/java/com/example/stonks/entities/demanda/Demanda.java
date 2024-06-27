@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.util.Date;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -20,7 +19,7 @@ public class Demanda extends Base {
     @Column(name = "nro_demanda")
     private int nroDemanda;
     @Column(name = "cantidad")
-    private int cantidad;
+    private float cantidad;
     @Column(name = "mes")
     private int mes;
     @Column(name = "año")

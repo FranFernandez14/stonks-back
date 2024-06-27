@@ -35,9 +35,6 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     @Autowired
     private OrdenDeCompraService ordenDeCompraService;
 
-    @Autowired
-    private DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService;
-
     public ArticuloServiceImpl(BaseRepository<Articulo, Long> baseRepository) {
         super(baseRepository);
     }
@@ -53,7 +50,7 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
                     .findFirst();
 
             if (demandaSeleccionada.isPresent()) {
-                int cantidad = demandaSeleccionada.get().getCantidad();
+                float cantidad = demandaSeleccionada.get().getCantidad();
                 double precioVenta = articulo.getPrecioVenta();
                 double ca = articulo.getCa();
                 double cp = articulo.getCp();
@@ -84,7 +81,7 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
                     .findFirst();
 
             if (demandaSeleccionada.isPresent()) {
-                int cantidadDemanda = demandaSeleccionada.get().getCantidad();
+                float cantidadDemanda = demandaSeleccionada.get().getCantidad();
 
                 FamiliaArticulo familiaArticulo = articulo.getFamiliaArticulo();
                 double loteOptimo;
@@ -122,14 +119,14 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
                     .findFirst();
 
             if (demandaSeleccionada.isPresent() && articulo.getPredeterminado() != null) {
-                int cantidadDemanda = demandaSeleccionada.get().getCantidad();
+                float cantidadDemanda = demandaSeleccionada.get().getCantidad();
                 int diasDemoraEntrega = articulo.getPredeterminado().getDiasDemoraEntrega();
-                int puntoPedido = cantidadDemanda * diasDemoraEntrega;
+                float puntoPedido = cantidadDemanda * diasDemoraEntrega;
 
-                articulo.setPuntoPedido(puntoPedido);
+                articulo.setPuntoPedido((int) puntoPedido);
                 save(articulo);
 
-                return Optional.of(puntoPedido);
+                return Optional.of((int) puntoPedido);
             } else {
                 return Optional.empty();
             }
@@ -230,7 +227,6 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         }
     }
 
-
     @Transactional
     public List<Articulo> listarProductosFaltantes() {
         try {
@@ -247,3 +243,4 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     }
 
 }
+
