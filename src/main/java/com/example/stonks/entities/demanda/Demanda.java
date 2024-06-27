@@ -16,8 +16,6 @@ import java.util.Date;
 @Setter
 public class Demanda extends Base {
 
-    @Column(name = "nro_demanda")
-    private int nroDemanda;
     @Column(name = "cantidad")
     private float cantidad;
     @Column(name = "mes")

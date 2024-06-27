@@ -100,15 +100,31 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
     }
 
-    public void cambiarEstadoOrdenDeCompra(Long idOrdenDeCompra){
+    public void cambiarEstadoOrdenDeCompra(Long idOrdenDeCompra) throws Exception {
 
         OrdenDeCompra ordenDeCompra = ordenDeCompraRepository.getReferenceById(idOrdenDeCompra);
 
-        if (ordenDeCompra.getEstadoActual().getNumero()>1 && ordenDeCompra.getEstadoActual().getNumero()<5){
-            ordenDeCompra.setEstadoActual(EstadoODC.fromNumero(ordenDeCompra.getEstadoActual().getNumero()+1));
+        EstadoODC estadoActual = ordenDeCompra.getEstadoActual();
+
+        if (estadoActual == EstadoODC.SIN_CONFIRMAR) {
+            ordenDeCompra.setEstadoActual(EstadoODC.CONFIRMADA);
+        } else if (estadoActual == EstadoODC.CONFIRMADA) {
+            ordenDeCompra.setEstadoActual(EstadoODC.ACEPTADA);
+        } else if (estadoActual == EstadoODC.ACEPTADA) {
+            ordenDeCompra.setEstadoActual(EstadoODC.EN_CAMINO);
+        } else if (estadoActual == EstadoODC.EN_CAMINO) {
+            ordenDeCompra.setEstadoActual(EstadoODC.RECIBIDA);
+            for ( DetalleOrdenDeCompra detalle : ordenDeCompra.getDetalles()) {
+                Articulo articulo = detalle.getArticulo();
+                articulo.setStockActual(articulo.getStockActual() + (detalle.getCantidad()));
+                articuloService.save(articulo);
+            }
         }
+
+
         ordenDeCompraRepository.save(ordenDeCompra);
     }
+
 
     public void cancelarOrdenDeCompra (Long idOrdenDeCompra){
 

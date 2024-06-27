@@ -1,31 +1,29 @@
 package com.example.stonks.entities.orden_de_compra;
 
 public enum EstadoODC {
-    SIN_CONFIRMAR(1),
-    CONFIRMADA(2),
-    ACEPTADA(3),
-    EN_CAMINO(4),
-    RECIBIDA(5),
-    CANCELADA(6);
+    SIN_CONFIRMAR("Sin confirmar"),
+    CONFIRMADA("Confirmada"),
+    ACEPTADA("Aceptada"),
+    EN_CAMINO("En camino"),
+    RECIBIDA("Recibida"),
+    CANCELADA("Cancelada");
 
-    private final int numero;
+    private final String estado;
 
-    EstadoODC(int numero) {
-        this.numero = numero;
+    EstadoODC(String estado) {
+        this.estado = estado;
     }
 
-    public int getNumero() {
-        return numero;
+    public String getEstado() {
+        return estado;
     }
 
-    public static EstadoODC fromNumero(int numero) {
-        for (EstadoODC estado : EstadoODC.values()) {
-            if (estado.getNumero() == numero) {
-                return estado;
+    public static EstadoODC fromEstado(String estado) {
+        for (EstadoODC value : EstadoODC.values()) {
+            if (value.estado.equalsIgnoreCase(estado)) {
+                return value;
             }
         }
-        throw new IllegalArgumentException("Número de estado no válido: " + numero);
+        throw new IllegalArgumentException("Estado no válido: " + estado);
     }
-
-
 }

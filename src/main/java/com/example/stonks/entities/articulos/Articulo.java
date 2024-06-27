@@ -51,7 +51,5 @@ public class Articulo extends Base {
     @JsonIgnoreProperties("proveedorArticulos")
     private Proveedor predeterminado;
 
-    @OneToMany(mappedBy = "articulo")
-    private List<Demanda> demandas;
 
 }

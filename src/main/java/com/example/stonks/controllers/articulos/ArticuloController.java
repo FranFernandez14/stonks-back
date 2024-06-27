@@ -18,11 +18,11 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
 
     @Autowired
     private ArticuloServiceImpl articuloService;
-
+/*
     @PostMapping("/{idArticulo}/calcularCGI")
-    public ResponseEntity<?> calcularCGI(@PathVariable Long idArticulo, @RequestParam int nroDemanda) {
+    public ResponseEntity<?> calcularCGI(@PathVariable Long idArticulo, @RequestParam Long idDemanda) {
         try {
-            Optional<Double> resultado = articuloService.calcularCGI(idArticulo, nroDemanda);
+            Optional<Double> resultado = articuloService.calcularCGI(idArticulo, idDemanda);
             if (resultado.isPresent()) {
                 return ResponseEntity.ok(resultado.get());
             } else {
@@ -34,9 +34,9 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
     }
 
     @PostMapping("/{id}/calcular-lote-optimo")
-    public ResponseEntity<?> calcularLoteOptimo(@PathVariable Long id, @RequestParam int nroDemanda) {
+    public ResponseEntity<?> calcularLoteOptimo(@PathVariable Long id, @RequestParam Long idDemanda) {
         try {
-            Optional<Integer> loteOptimo = articuloService.calcularLoteOptimo(id, nroDemanda);
+            Optional<Integer> loteOptimo = articuloService.calcularLoteOptimo(id, idDemanda);
             if (loteOptimo.isPresent()) {
                 return ResponseEntity.ok(loteOptimo.get());
             } else {
@@ -48,9 +48,9 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
     }
 
     @PostMapping("/{id}/calcular-punto-pedido")
-    public ResponseEntity<?> calcularPuntoPedido(@PathVariable Long id, @RequestParam int nroDemanda) {
+    public ResponseEntity<?> calcularPuntoPedido(@PathVariable Long id, @RequestParam Long idDemanda) {
         try {
-            Optional<Integer> puntoPedido = articuloService.calcularPuntoPedido(id, nroDemanda);
+            Optional<Integer> puntoPedido = articuloService.calcularPuntoPedido(id, idDemanda);
             if (puntoPedido.isPresent()) {
                 return ResponseEntity.ok(puntoPedido.get());
             } else {
@@ -60,7 +60,7 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al calcular el Punto de Pedido.");
         }
     }
-
+*/
     @PostMapping("/{id}/calcular-stock-seguridad")
     public ResponseEntity<?> calcularStockSeguridad(@PathVariable Long id, @RequestParam double z, @RequestParam double desviacion) {
         try {

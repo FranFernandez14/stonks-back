@@ -39,14 +39,15 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         super(baseRepository);
     }
 
+    /*
     @Transactional
-    public Optional<Double> calcularCGI(Long idArticulo, int nroDemanda) {
+    public Optional<Double> calcularCGI(Long idArticulo, Long idDemanda) {
         try {
             Articulo articulo = findById(idArticulo);
 
             // Selecciona la demanda específica basada en nroDemanda
             Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getNroDemanda() == nroDemanda)
+                    .filter(d -> d.getId() == idDemanda)
                     .findFirst();
 
             if (demandaSeleccionada.isPresent()) {
@@ -71,13 +72,13 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         }
     }
 
-    public Optional<Integer> calcularLoteOptimo(Long idArticulo, int nroDemanda) {
+    public Optional<Integer> calcularLoteOptimo(Long idArticulo, Long idDemanda) {
         try {
             Articulo articulo = findById(idArticulo);
 
             // Selecciona la demanda específica basada en nroDemanda
             Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getNroDemanda() == nroDemanda)
+                    .filter(d -> d.getId() == idDemanda)
                     .findFirst();
 
             if (demandaSeleccionada.isPresent()) {
@@ -110,12 +111,12 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     }
 
     @Transactional
-    public Optional<Integer> calcularPuntoPedido(Long idArticulo, int nroDemanda) {
+    public Optional<Integer> calcularPuntoPedido(Long idArticulo, Long idDemanda) {
         try {
             Articulo articulo = findById(idArticulo);
             // Selecciona la demanda específica basada en nroDemanda
             Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getNroDemanda() == nroDemanda)
+                    .filter(d -> d.getId() == idDemanda)
                     .findFirst();
 
             if (demandaSeleccionada.isPresent() && articulo.getPredeterminado() != null) {
@@ -135,7 +136,7 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
             return Optional.empty();
         }
     }
-
+*/
     @Transactional
     public Optional<Integer> calcularStockSeguridad(Long idArticulo, double z, double desviacion) {
         try {
