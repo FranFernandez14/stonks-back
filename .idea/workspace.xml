@@ -5,8 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4db86a18-d699-473a-ad0d-81d84971fa3b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/PrediccionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/PrediccionController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo$ArticuloBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo$ArticuloBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/articulos/Articulo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/demanda/Demanda.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/demanda/Demanda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/demanda/Prediccion$PrediccionBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/demanda/Prediccion$PrediccionBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/demanda/Prediccion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/demanda/Prediccion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/Proveedor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/entities/orden_de_compra/Proveedor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/repositories/PrediccionRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/repositories/PrediccionRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/DTORetornoPrediccion$DTORetornoPrediccionBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/DTORetornoPrediccion$DTORetornoPrediccionBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/DTORetornoPrediccion.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/DTORetornoPrediccion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/PrediccionServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/PrediccionServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaMetodoIndices.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaMetodoIndices.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPMSuavizado.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPMSuavizado.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPromedioMovil.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPromedioMovil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/FactoriaEstrategiaPredecirDemanda.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/demanda/estrategiaPredecirDemanda/FactoriaEstrategiaPredecirDemanda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EstrategiaMetodoIndices.class.uniqueId7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EstrategiaPMSuavizado.class.uniqueId4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/EstrategiaPromedioMovil.class.uniqueId5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraController.class.uniqueId1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraRepository.class.uniqueId35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraServiceImpl.class.uniqueId30" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/OrdenDeCompraServiceImpl.class.uniqueId6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionController.class.uniqueId2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionRepository.class.uniqueId9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/PrediccionServiceImpl.class.uniqueId0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/Proveedor.class.uniqueId20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/VentaController.class.uniqueId3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/compileTransaction/stash-dir/VentaServiceImpl.class.uniqueId8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/PrediccionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/PrediccionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/controllers/orden_de_compra/OrdenDeCompraController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/demanda/Demanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/demanda/Demanda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/demanda/Prediccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/entities/demanda/Prediccion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/PrediccionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/repositories/PrediccionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/DTORetornoPrediccion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/PrediccionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/DTOListaPrediccion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/DTOListaPrediccion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaMetodoIndices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaMetodoIndices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPMSuavizado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPMSuavizado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPromedioMovil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/EstrategiaPromedioMovil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/FactoriaEstrategiaPredecirDemanda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/demanda/estrategiaPredecirDemanda/FactoriaEstrategiaPredecirDemanda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/stonks/services/orden_de_compra/OrdenDeCompraServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +72,21 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -56,13 +126,19 @@
     &quot;git-widget-placeholder&quot;: &quot;marcos&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\UTN\4-Cuarto año\Investigación Operativa\TP Integrador\stonks-back\stonks-back\src\test\java\com\example\stonks\ServicesTest" />
     </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle build --warning-mode" />
+      <command value="gradle build --warning-mode=all" />
+    </option>
   </component>
   <component name="RunManager" selected="Application.StonksApplication">
     <configuration name="StonksApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -126,6 +202,28 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="stonks-back [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--warning-mode" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="stonks-back" />
       <method v="2">
@@ -141,6 +239,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.stonks-back [build]" />
         <item itemvalue="Gradle.VentaServiceImplTest" />
         <item itemvalue="Gradle.VentaServiceImplTest.testRegistrarCompra" />
         <item itemvalue="Application.StonksApplication" />
@@ -160,5 +259,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

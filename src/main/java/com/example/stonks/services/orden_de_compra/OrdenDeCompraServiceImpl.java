@@ -49,10 +49,6 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
     @Autowired
     private ProveedorServiceImpl proveedorService;
 
-    public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
-        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
-    }
-
     public OrdenDeCompra generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
 
         Articulo articulo = articuloService.findById(idArticulo);
