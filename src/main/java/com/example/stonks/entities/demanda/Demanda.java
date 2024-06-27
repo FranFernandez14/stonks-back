@@ -25,7 +25,7 @@ public class Demanda extends Base {
     @Column(name = "año")
     private int año;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 
