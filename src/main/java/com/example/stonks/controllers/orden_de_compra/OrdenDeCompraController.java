@@ -21,6 +21,11 @@ public class OrdenDeCompraController extends BaseControllerImpl<OrdenDeCompra, O
     @Autowired
     private OrdenDeCompraServiceImpl ordenDeCompraService;
 
+    @PostMapping("/validarIntervaloFijo")
+    public void validarIntervaloFijo() throws Exception {
+        ordenDeCompraService.validarArticulosIntervaloFijo();
+    }
+
     @PutMapping("/cambiarProveedor")
     public void cambiarProveedor(@RequestBody CambiarProveedorDTO cambiarProveedorDTO) throws Exception {
        ordenDeCompraService.cambiarProveedor(cambiarProveedorDTO);
