@@ -22,8 +22,9 @@ public class ProveedorController extends BaseControllerImpl<Proveedor, Proveedor
     @Autowired
     private ProveedorArticuloServiceImpl proveedorArticuloService;
     @GetMapping("/getProveedorArticulo/{idArticulo}")
-    public List<ProveedorArticuloDTO>  getProveedorArticuloByArticulo(@PathVariable  Long idArticulo){
+    public List<ProveedorArticuloDTO>  getProveedorArticuloByArticulo(@PathVariable  Long idArticulo) {
         return proveedorArticuloService.getProveedorArticulobyArticulo(idArticulo);
+    }
     @PutMapping("/alta{id}")
     public ResponseEntity<?> update(@PathVariable Long id){
         try{
