@@ -16,7 +16,5 @@ import java.util.List;
 @NoArgsConstructor
 public class DTORetornoPrediccion {
     private List<Prediccion> listaPrediccion;
-    private OrdenDeCompra ordenDeCompra;
-    private boolean seGeneraOrden;
     private String estrategiaGanadora;
 }
