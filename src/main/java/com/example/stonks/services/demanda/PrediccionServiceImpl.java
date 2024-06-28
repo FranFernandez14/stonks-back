@@ -134,19 +134,10 @@ public class PrediccionServiceImpl extends BaseServiceImpl<Prediccion, Long> imp
 
             this.prediccionRepository.saveAll(prediccionesParaPersistir);
 
-            float demandaEsperada = prediccionGanadora.get().getListaPrediccion()
-                                    .get(dtoIngresoParametrosDemanda.getCantidadPeriodosParaError())
-                                    .getValorPrediccion();
-
-            Articulo articulo = dtoIngresoParametrosDemanda.getArticulo();
-            OrdenDeCompra ordenDeCompra = null;
-            boolean seGeneraOrden = false;
-
             DTORetornoPrediccion dtoRetornoPrediccion = DTORetornoPrediccion.builder()
                     .listaPrediccion(prediccionesParaPersistir)
                     .estrategiaGanadora(prediccionGanadora.get().getEstrategia())
-                    .seGeneraOrden(seGeneraOrden)
-                    .ordenDeCompra(ordenDeCompra).build();
+                    .build();
 
             return dtoRetornoPrediccion;
 
