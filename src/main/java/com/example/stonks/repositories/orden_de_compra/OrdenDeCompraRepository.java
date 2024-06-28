@@ -29,4 +29,5 @@ public interface OrdenDeCompraRepository extends BaseRepository<OrdenDeCompra, L
             @Param("articuloId") Long articuloId,
             @Param("estados") List<EstadoODC> estados
     );
+
 }

@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/proveedores")
+@RequestMapping(path = "/api/v1/proveedores")
 public class ProveedorController extends BaseControllerImpl<Proveedor, ProveedorServiceImpl> {
 
     @Autowired
@@ -22,5 +24,12 @@ public class ProveedorController extends BaseControllerImpl<Proveedor, Proveedor
     @GetMapping("/getProveedorArticulo/{idArticulo}")
     public List<ProveedorArticuloDTO>  getProveedorArticuloByArticulo(@PathVariable  Long idArticulo){
         return proveedorArticuloService.getProveedorArticulobyArticulo(idArticulo);
+    @PutMapping("/alta{id}")
+    public ResponseEntity<?> update(@PathVariable Long id){
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.alta(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + e.getMessage() + "\"");
+        }
     }
 }
