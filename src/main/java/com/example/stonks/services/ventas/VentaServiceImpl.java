@@ -9,6 +9,7 @@ import com.example.stonks.repositories.BaseRepository;
 import com.example.stonks.repositories.ventas.VentaRepository;
 import com.example.stonks.services.BaseServiceImpl;
 import com.example.stonks.services.articulos.ArticuloServiceImpl;
+import com.example.stonks.services.demanda.DemandaServiceImpl;
 import com.example.stonks.services.orden_de_compra.OrdenDeCompraServiceImpl;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
     private ArticuloServiceImpl articuloService;
 
     @Autowired
+    private DemandaServiceImpl demandaService;
+
+    @Autowired
     private OrdenDeCompraServiceImpl ordenDeCompraService;
 
     public VentaServiceImpl(BaseRepository<Venta, Long> baseRepository, VentaRepository ventaRepository, EntityManager entityManager, ArticuloServiceImpl articuloService, OrdenDeCompraServiceImpl ordenDeCompraService) {
@@ -45,7 +49,7 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
         try{
 
             for (LineaVenta lineaVenta : v.getLineasVenta()) { //por cada linea de venta
-                Articulo articulo = articuloService.findById(lineaVenta.getArticulo().getId());   //obtener el articulo, se podría hacer desde el ventaRepository
+                Articulo articulo = lineaVenta.getArticulo();   //obtener el articulo, se podría hacer desde el ventaRepository
                 //checkear si hay stock
                 if (articulo.getStockActual() < lineaVenta.getCantidad()){
                     throw new Exception("El artículo "+articulo.getNombre()+" no posee suficiente stock como para realizar la venta");
@@ -63,19 +67,16 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
                             .cantidad(lineaVenta.getCantidad())
                             .build();
 
-                    entityManager.persist(demanda); //se podría persistir tod o de una
-                    entityManager.flush();
+                    demandaService.save(demanda);
                 } else {
                     Demanda demanda = demandaMesAñoActual.get();
                     demanda.setCantidad(demanda.getCantidad() + lineaVenta.getCantidad());
-                    entityManager.persist(demanda);
-                    entityManager.flush();
+                    demandaService.save(demanda);
                 }
 
                 //generar orden de compra si el stock baja por debajo del punto de pedido
                 articulo.setStockActual(articulo.getStockActual() - lineaVenta.getCantidad());
-                entityManager.persist(articulo);
-                entityManager.flush();
+                articuloService.save(articulo);
 
                 if (articulo.getFamiliaArticulo().getModeloInventario().equals(ModeloInventario.Lote_Fijo)) {
                     if (articulo.getPuntoPedido() >= articulo.getStockActual()) {
