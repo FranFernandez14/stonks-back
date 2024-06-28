@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/articulos")
+@RequestMapping(path = "/api/v1/articulos")
 public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloServiceImpl> {
 
     @Autowired
