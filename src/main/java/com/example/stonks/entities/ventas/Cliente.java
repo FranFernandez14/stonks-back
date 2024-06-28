@@ -24,5 +24,5 @@ public class Cliente extends Base {
     private String nombre;
 
     @Column(name = "cuit_cliente")
-    private String CUIT;
+    private String cuit;
 }

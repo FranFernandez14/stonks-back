@@ -1,6 +1,7 @@
 package com.example.stonks.services.ventas;
 
 import com.example.stonks.entities.articulos.Articulo;
+import com.example.stonks.entities.articulos.ModeloInventario;
 import com.example.stonks.entities.demanda.Demanda;
 import com.example.stonks.entities.ventas.LineaVenta;
 import com.example.stonks.entities.ventas.Venta;
@@ -75,10 +76,11 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
                 articulo.setStockActual(articulo.getStockActual() - lineaVenta.getCantidad());
                 entityManager.persist(articulo);
                 entityManager.flush();
-                if (articulo.getPuntoPedido() >= articulo.getStockActual()) {
-                    //encapsular lógica de crear la orden de compra en otro objeto
-                    //TODO implementar acá la lógica de crear la orden de compra de múltiples artículos agrupados por proveedor
-                    ordenDeCompraService.generarOrdenDeCompra(articulo.getId(), articulo.getPredeterminado().getId());
+
+                if (articulo.getFamiliaArticulo().getModeloInventario().equals(ModeloInventario.Lote_Fijo)) {
+                    if (articulo.getPuntoPedido() >= articulo.getStockActual()) {
+                        ordenDeCompraService.generarOrdenDeCompra(articulo.getId(), articulo.getPredeterminado().getId());
+                    }
                 }
             }
             return ventaRepository.save(v);
