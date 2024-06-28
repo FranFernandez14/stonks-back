@@ -1,30 +1,26 @@
 package com.example.stonks.services.demanda.estrategiaPredecirDemanda;
 
+import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FactoriaEstrategiaPredecirDemanda {
 
-    private static FactoriaEstrategiaPredecirDemanda instance;
+    @Autowired
+    private List<EstrategiaPredecirDemanda> listaEstrategias = new ArrayList<EstrategiaPredecirDemanda>();
 
-    //SINGLETON
-    public static FactoriaEstrategiaPredecirDemanda getInstance() {
-        if (FactoriaEstrategiaPredecirDemanda.instance == null) {
-            FactoriaEstrategiaPredecirDemanda.instance = new FactoriaEstrategiaPredecirDemanda();
-            return FactoriaEstrategiaPredecirDemanda.instance;
-        } else {
-            return FactoriaEstrategiaPredecirDemanda.instance;
-        }
+    private List<EstrategiaPredecirDemanda> listaRetorno = new ArrayList<EstrategiaPredecirDemanda>();
+
+    @PostConstruct
+    private void inicializarFactoria() {
+        listaRetorno.addAll(this.listaEstrategias);
     }
 
-    public List<EstrategiaPredecirDemanda> obtenerEstrategias() {
-
-        List <EstrategiaPredecirDemanda> lista = new ArrayList<EstrategiaPredecirDemanda>();
-
-        lista.add(new EstrategiaMetodoIndices());
-        lista.add(new EstrategiaPromedioMovil());
-        lista.add(new EstrategiaPMSuavizado());
-
-        return lista;
+    public List<EstrategiaPredecirDemanda> obtenerEstrategias(){
+        return listaRetorno;
     }
 }

@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.util.Date;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -17,16 +16,14 @@ import java.util.Date;
 @Setter
 public class Demanda extends Base {
 
-    @Column(name = "nro_demanda")
-    private int nroDemanda;
     @Column(name = "cantidad")
-    private int cantidad;
+    private float cantidad;
     @Column(name = "mes")
     private int mes;
     @Column(name = "año")
     private int año;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 

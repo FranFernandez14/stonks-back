@@ -11,12 +11,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
+
 
 @Repository
 public interface OrdenDeCompraRepository extends BaseRepository<OrdenDeCompra, Long> {
 
     @Query("SELECT o FROM OrdenDeCompra o WHERE o.proveedor = :proveedor AND o.estadoActual = :estadoActual")
-    OrdenDeCompra findOrdenDeCompraPorProveedorYPorEstado(@Param("proveedor") Proveedor proveedor, @Param("estadoActual") EstadoODC estadoActual);
+    Optional<OrdenDeCompra> findOrdenDeCompraPorProveedorYPorEstado(@Param("proveedor") Proveedor proveedor, @Param("estadoActual") EstadoODC estadoActual);
 
     @Query("SELECT o FROM OrdenDeCompra o WHERE o.estadoActual = :estadoActual")
     Page<OrdenDeCompra> getByState(@Param("estadoActual") EstadoODC estadoODC, Pageable pageable);

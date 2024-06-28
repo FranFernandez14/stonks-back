@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/ventas")
+@RequestMapping(path = "/api/v1/ventas")
 public class VentaController extends BaseControllerImpl<Venta, VentaServiceImpl> {
 
     @PostMapping("/registrar_venta")

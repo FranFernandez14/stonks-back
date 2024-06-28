@@ -16,5 +16,5 @@ import java.util.List;
 @NoArgsConstructor
 public class DTORetornoPrediccion {
     private List<Prediccion> listaPrediccion;
-    private OrdenDeCompra ordenDeCompra;
+    private String estrategiaGanadora;
 }

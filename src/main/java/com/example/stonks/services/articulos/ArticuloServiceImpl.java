@@ -39,18 +39,19 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         super(baseRepository);
     }
 
+    /*
     @Transactional
-    public Optional<Double> calcularCGI(Long idArticulo, int nroDemanda) {
+    public Optional<Double> calcularCGI(Long idArticulo, Long idDemanda) {
         try {
             Articulo articulo = findById(idArticulo);
 
             // Selecciona la demanda específica basada en nroDemanda
             Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getNroDemanda() == nroDemanda)
+                    .filter(d -> d.getId() == idDemanda)
                     .findFirst();
 
             if (demandaSeleccionada.isPresent()) {
-                int cantidad = demandaSeleccionada.get().getCantidad();
+                float cantidad = demandaSeleccionada.get().getCantidad();
                 double precioVenta = articulo.getPrecioVenta();
                 double ca = articulo.getCa();
                 double cp = articulo.getCp();
@@ -71,17 +72,17 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         }
     }
 
-    public Optional<Integer> calcularLoteOptimo(Long idArticulo, int nroDemanda) {
+    public Optional<Integer> calcularLoteOptimo(Long idArticulo, Long idDemanda) {
         try {
             Articulo articulo = findById(idArticulo);
 
             // Selecciona la demanda específica basada en nroDemanda
             Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getNroDemanda() == nroDemanda)
+                    .filter(d -> d.getId() == idDemanda)
                     .findFirst();
 
             if (demandaSeleccionada.isPresent()) {
-                int cantidadDemanda = demandaSeleccionada.get().getCantidad();
+                float cantidadDemanda = demandaSeleccionada.get().getCantidad();
 
                 FamiliaArticulo familiaArticulo = articulo.getFamiliaArticulo();
                 double loteOptimo;
@@ -110,23 +111,23 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     }
 
     @Transactional
-    public Optional<Integer> calcularPuntoPedido(Long idArticulo, int nroDemanda) {
+    public Optional<Integer> calcularPuntoPedido(Long idArticulo, Long idDemanda) {
         try {
             Articulo articulo = findById(idArticulo);
             // Selecciona la demanda específica basada en nroDemanda
             Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getNroDemanda() == nroDemanda)
+                    .filter(d -> d.getId() == idDemanda)
                     .findFirst();
 
             if (demandaSeleccionada.isPresent() && articulo.getPredeterminado() != null) {
-                int cantidadDemanda = demandaSeleccionada.get().getCantidad();
+                float cantidadDemanda = demandaSeleccionada.get().getCantidad();
                 int diasDemoraEntrega = articulo.getPredeterminado().getDiasDemoraEntrega();
-                int puntoPedido = cantidadDemanda * diasDemoraEntrega;
+                float puntoPedido = cantidadDemanda * diasDemoraEntrega;
 
-                articulo.setPuntoPedido(puntoPedido);
+                articulo.setPuntoPedido((int) puntoPedido);
                 save(articulo);
 
-                return Optional.of(puntoPedido);
+                return Optional.of((int) puntoPedido);
             } else {
                 return Optional.empty();
             }
@@ -135,7 +136,7 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
             return Optional.empty();
         }
     }
-
+*/
     @Transactional
     public Optional<Integer> calcularStockSeguridad(Long idArticulo, double z, double desviacion) {
         try {
@@ -242,4 +243,9 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         }
     }
 
+    public List<Articulo> findArticulosByModeloInventario (ModeloInventario modeloInventario){
+        return articuloRepository.findArticulosByModeloInventario(modeloInventario);
+    }
+
 }
+

@@ -9,6 +9,8 @@ import com.example.stonks.services.orden_de_compra.OrdenDeCompraServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,13 +21,18 @@ public class OrdenDeCompraController extends BaseControllerImpl<OrdenDeCompra, O
     @Autowired
     private OrdenDeCompraServiceImpl ordenDeCompraService;
 
+    @PostMapping("/validarIntervaloFijo")
+    public void validarIntervaloFijo() throws Exception {
+        ordenDeCompraService.validarArticulosIntervaloFijo();
+    }
+
     @PutMapping("/cambiarProveedor")
     public void cambiarProveedor(@RequestBody CambiarProveedorDTO cambiarProveedorDTO) throws Exception {
        ordenDeCompraService.cambiarProveedor(cambiarProveedorDTO);
     }
 
     @PutMapping("/cambiarEstado/{id}")
-    public void cambiarEstado(@PathVariable Long id ){
+    public void cambiarEstado(@PathVariable Long id ) throws Exception {
         ordenDeCompraService.cambiarEstadoOrdenDeCompra(id);
     }
 
@@ -35,13 +42,18 @@ public class OrdenDeCompraController extends BaseControllerImpl<OrdenDeCompra, O
     }
 
     @PostMapping("/generarOrden")
-    public void generarOrden(@RequestBody GenerarOrdenDTO generarOrdenDTO) throws Exception {
-        ordenDeCompraService.generarOrdenDeCompra(generarOrdenDTO.getIdArticulo(), generarOrdenDTO.getIdProveedor());
+    public ResponseEntity<?> generarOrden(@RequestBody GenerarOrdenDTO generarOrdenDTO) throws Exception {
+        try{
+            return ResponseEntity.status(HttpStatus.OK).body(ordenDeCompraService.generarOrdenDeCompra(generarOrdenDTO.getIdArticulo(), generarOrdenDTO.getIdProveedor()));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("{\"error\":\"" + e.getMessage() + "\"");
+        }
     }
 
-    @GetMapping("getByState/{idEstado}")
-    public Page<OrdenDeCompra> getByState(@PathVariable Long idEstado, Pageable pageable) throws Exception{
-        return ordenDeCompraService.getByState(EstadoODC.fromNumero(idEstado.intValue()), pageable);
+    @GetMapping("/getByState/{estadoODC}")
+    public Page<OrdenDeCompra> getByState(@PathVariable String estadoODC, Pageable pageable) throws Exception {
+        EstadoODC estado = EstadoODC.fromEstado(estadoODC);
+        return ordenDeCompraService.getByState(estado, pageable);
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.stonks.services.orden_de_compra;
 
 import com.example.stonks.dtos.orden_de_compra.CambiarProveedorDTO;
 import com.example.stonks.entities.articulos.Articulo;
+import com.example.stonks.entities.articulos.ModeloInventario;
 import com.example.stonks.entities.orden_de_compra.*;
 import com.example.stonks.repositories.BaseRepository;
 import com.example.stonks.repositories.orden_de_compra.OrdenDeCompraRepository;
@@ -12,18 +13,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Long> implements OrdenDeCompraService{
+    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository) {
+        super(baseRepository);
+    }
 
     @Autowired
     private OrdenDeCompraRepository ordenDeCompraRepository;
 
-    public OrdenDeCompraServiceImpl(BaseRepository<OrdenDeCompra, Long> baseRepository) {
-        super(baseRepository);
+
+    public Optional<OrdenDeCompra> getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
+        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
     }
 
 
@@ -32,7 +35,7 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
 
     @Autowired
-    private ProveedorArticuloService proveedorArticuloService;
+    private ProveedorArticuloServiceImpl proveedorArticuloService;
 
     @Autowired
     private DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService;
@@ -40,41 +43,53 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
     @Autowired
     private ProveedorServiceImpl proveedorService;
 
-    public OrdenDeCompra getOrdenDeCompraPorProveedor(Proveedor proveedor, EstadoODC estado){
-        return ordenDeCompraRepository.findOrdenDeCompraPorProveedorYPorEstado(proveedor, estado);
-    }
-
     public OrdenDeCompra generarOrdenDeCompra(Long idArticulo, Long idProveedor) throws Exception {
 
         Articulo articulo = articuloService.findById(idArticulo);
 
-        Proveedor proveedor = proveedorService.findById(idProveedor);
-
-        OrdenDeCompra ordenDeCompra = getOrdenDeCompraPorProveedor(proveedor, EstadoODC.SIN_CONFIRMAR);
-        Date date = new Date();
-        ProveedorArticulo proveedorArticulo = proveedorArticuloService.getProveedorArticuloByProveedorAndArticulo(proveedor, articulo);
-
-        DetalleOrdenDeCompra detalleOrdenDeCompra = new DetalleOrdenDeCompra();
-        detalleOrdenDeCompra.setArticulo(articulo);
-        detalleOrdenDeCompra.setCantidad(articulo.getLoteOptimo());
-        detalleOrdenDeCompra.setValorArticulo(proveedorArticulo.getPrecio());
-        detalleOrdenDeCompra.setTotalDetalle(detalleOrdenDeCompra.getCantidad()* detalleOrdenDeCompra.getValorArticulo());
+        List<EstadoODC> estados = Arrays.asList(
+                EstadoODC.SIN_CONFIRMAR,
+                EstadoODC.CONFIRMADA,
+                EstadoODC.ACEPTADA,
+                EstadoODC.EN_CAMINO
+        );
 
 
+        if (ordenDeCompraRepository.getOrderByArticuloAndEstados(articulo.getId(), estados).isEmpty()){
 
-        if (ordenDeCompra == null){
+            Proveedor proveedor = proveedorService.findById(idProveedor);
 
-            ordenDeCompra.setProveedor(proveedor);
-            ordenDeCompra.setCostoEnvio(proveedor.getCostoEnvio());
-            ordenDeCompra.setFechaCreacion(date);
-            ordenDeCompra.setCostoTotal(detalleOrdenDeCompra.getTotalDetalle());
-        }else{
-            ordenDeCompra.setCostoTotal(ordenDeCompra.getCostoTotal() + detalleOrdenDeCompra.getTotalDetalle());
+            Optional <OrdenDeCompra> ordenDeCompra = getOrdenDeCompraPorProveedor(proveedor, EstadoODC.SIN_CONFIRMAR);
+            Date date = new Date();
+            ProveedorArticulo proveedorArticulo = proveedorArticuloService.getProveedorArticuloByProveedorAndArticulo(proveedor, articulo);
+
+            DetalleOrdenDeCompra detalleOrdenDeCompra = new DetalleOrdenDeCompra();
+            detalleOrdenDeCompra.setArticulo(articulo);
+            detalleOrdenDeCompra.setCantidad(articulo.getLoteOptimo());
+            detalleOrdenDeCompra.setValorArticulo(proveedorArticulo.getPrecio());
+            detalleOrdenDeCompra.setTotalDetalle(detalleOrdenDeCompra.getCantidad()* detalleOrdenDeCompra.getValorArticulo());
+
+
+
+            if (ordenDeCompra.isEmpty()){
+                OrdenDeCompra ordenDeCompra1 = new OrdenDeCompra();
+                ordenDeCompra1.setProveedor(proveedor);
+                ordenDeCompra1.setCostoEnvio(proveedor.getCostoEnvio());
+                ordenDeCompra1.setFechaCreacion(date);
+                ordenDeCompra1.setCostoTotal(detalleOrdenDeCompra.getTotalDetalle());
+                ordenDeCompra1.getDetalles().add(detalleOrdenDeCompra);
+                ordenDeCompra1.setEstadoActual(EstadoODC.SIN_CONFIRMAR);
+                return this.ordenDeCompraRepository.save(ordenDeCompra1);
+            }else{
+                OrdenDeCompra ordenDeCompra1 = ordenDeCompra.get();
+                ordenDeCompra1.setCostoTotal(ordenDeCompra1.getCostoTotal() + detalleOrdenDeCompra.getTotalDetalle());
+                ordenDeCompra1.getDetalles().add(detalleOrdenDeCompra);
+                return this.ordenDeCompraRepository.save(ordenDeCompra1);
+            }
+
+        }else {
+            return null;
         }
-        ordenDeCompra.getDetalles().add(detalleOrdenDeCompra);
-
-        return this.ordenDeCompraRepository.save(ordenDeCompra);
-
     }
 
     public void cambiarProveedor(CambiarProveedorDTO cambiarProveedorDTO) throws Exception {
@@ -95,15 +110,31 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
 
     }
 
-    public void cambiarEstadoOrdenDeCompra(Long idOrdenDeCompra){
+    public void cambiarEstadoOrdenDeCompra(Long idOrdenDeCompra) throws Exception {
 
         OrdenDeCompra ordenDeCompra = ordenDeCompraRepository.getReferenceById(idOrdenDeCompra);
 
-        if (ordenDeCompra.getEstadoActual().getNumero()>1 && ordenDeCompra.getEstadoActual().getNumero()<5){
-            ordenDeCompra.setEstadoActual(EstadoODC.fromNumero(ordenDeCompra.getEstadoActual().getNumero()+1));
+        EstadoODC estadoActual = ordenDeCompra.getEstadoActual();
+
+        if (estadoActual == EstadoODC.SIN_CONFIRMAR) {
+            ordenDeCompra.setEstadoActual(EstadoODC.CONFIRMADA);
+        } else if (estadoActual == EstadoODC.CONFIRMADA) {
+            ordenDeCompra.setEstadoActual(EstadoODC.ACEPTADA);
+        } else if (estadoActual == EstadoODC.ACEPTADA) {
+            ordenDeCompra.setEstadoActual(EstadoODC.EN_CAMINO);
+        } else if (estadoActual == EstadoODC.EN_CAMINO) {
+            ordenDeCompra.setEstadoActual(EstadoODC.RECIBIDA);
+            for ( DetalleOrdenDeCompra detalle : ordenDeCompra.getDetalles()) {
+                Articulo articulo = detalle.getArticulo();
+                articulo.setStockActual(articulo.getStockActual() + (detalle.getCantidad()));
+                articuloService.save(articulo);
+            }
         }
+
+
         ordenDeCompraRepository.save(ordenDeCompra);
     }
+
 
     public void cancelarOrdenDeCompra (Long idOrdenDeCompra){
 
@@ -119,8 +150,86 @@ public class OrdenDeCompraServiceImpl extends BaseServiceImpl<OrdenDeCompra, Lon
         return ordenDeCompraRepository.getByState(estadoODC, pageable);
     }
 
+    public void validarArticulosIntervaloFijo() throws Exception {
+
+            List<Articulo> articulos = articuloService.findArticulosByModeloInventario(ModeloInventario.Intervalo_Fijo);
+
+            Date hoy = new Date();
+
+            for (Articulo articulo: articulos) {
+                if (articulo.getUltimaFechaPedido() == null){
+                    generarOrdenArticuloIntervaloFijo(articulo);
+                }else {
+
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTime(articulo.getUltimaFechaPedido());
+                    calendar.add(Calendar.DAY_OF_MONTH, articulo.getIntervaloPedido());
+                    Date fechaLimite = calendar.getTime();
+
+                    if (!fechaLimite.after(hoy)) {
+                        generarOrdenArticuloIntervaloFijo(articulo);
+                    }
+                }
+            }
+
+    }
+
+    public void generarOrdenArticuloIntervaloFijo(Articulo articulo) throws Exception {
+
+        List<EstadoODC> estados = Arrays.asList(
+                EstadoODC.SIN_CONFIRMAR,
+                EstadoODC.CONFIRMADA,
+                EstadoODC.ACEPTADA,
+                EstadoODC.EN_CAMINO
+        );
+
+
+        if (ordenDeCompraRepository.getOrderByArticuloAndEstados(articulo.getId(), estados).isEmpty()) {
+
+
+            int cantidadAPedir = articulo.getInventarioMaximo() - articulo.getStockActual();
+
+            Proveedor proveedor = proveedorService.findById(articulo.getPredeterminado().getId());
+
+            Optional<OrdenDeCompra> ordenDeCompra = getOrdenDeCompraPorProveedor(proveedor, EstadoODC.SIN_CONFIRMAR);
+            Date date = new Date();
+            ProveedorArticulo proveedorArticulo = proveedorArticuloService.getProveedorArticuloByProveedorAndArticulo(proveedor, articulo);
+
+            DetalleOrdenDeCompra detalleOrdenDeCompra = new DetalleOrdenDeCompra();
+            detalleOrdenDeCompra.setArticulo(articulo);
+            detalleOrdenDeCompra.setCantidad(cantidadAPedir);
+            detalleOrdenDeCompra.setValorArticulo(proveedorArticulo.getPrecio());
+            detalleOrdenDeCompra.setTotalDetalle(detalleOrdenDeCompra.getCantidad() * detalleOrdenDeCompra.getValorArticulo());
+            articulo.setUltimaFechaPedido(new Date());
+            articuloService.save(articulo);
+
+            if (ordenDeCompra.isEmpty()) {
+                OrdenDeCompra ordenDeCompra1 = new OrdenDeCompra();
+                ordenDeCompra1.setProveedor(proveedor);
+                ordenDeCompra1.setCostoEnvio(proveedor.getCostoEnvio());
+                ordenDeCompra1.setFechaCreacion(date);
+                ordenDeCompra1.setCostoTotal(detalleOrdenDeCompra.getTotalDetalle());
+                ordenDeCompra1.getDetalles().add(detalleOrdenDeCompra);
+                ordenDeCompra1.setEstadoActual(EstadoODC.SIN_CONFIRMAR);
+                System.out.println("hola");
+                ordenDeCompraRepository.save(ordenDeCompra1);
+            } else {
+                OrdenDeCompra ordenDeCompra1 = ordenDeCompra.get();
+                ordenDeCompra1.setCostoTotal(ordenDeCompra1.getCostoTotal() + detalleOrdenDeCompra.getTotalDetalle());
+                ordenDeCompra1.getDetalles().add(detalleOrdenDeCompra);
+                System.out.println("chau");
+                ordenDeCompraRepository.save(ordenDeCompra1);
+            }
+
+        }
+
+
+
+    }
+
+
     @Override
     public List<OrdenDeCompra> getOrdenesByArticuloAndEstados(Long articuloId, List<EstadoODC> estados) {
-        return List.of();
+        return ordenDeCompraRepository.getOrderByArticuloAndEstados(articuloId, estados);
     }
 }
