@@ -27,16 +27,4 @@ public class DetalleOrdenDeCompraServiceImpl extends BaseServiceImpl<DetalleOrde
         return  detalleOrdenDeCompraRepository.findByOrdenDeCompraIdAndArticuloId(idOrdenDeCompra, idArticulo);
     }
 
-    public boolean verificarArticuloEnOrdenesDetallesEnProgreso(Articulo articulo) {
-        List<EstadoODC> estadosEnProgreso = Arrays.asList(
-                EstadoODC.SIN_CONFIRMAR,
-                EstadoODC.CONFIRMADA,
-                EstadoODC.ACEPTADA,
-                EstadoODC.EN_CAMINO
-        );
-
-        // Consulta los detalles de orden de compra que tienen el artículo y están en los estados en progreso
-        List<DetalleOrdenDeCompra> detallesEnProgreso = detalleOrdenDeCompraRepository.findByArticuloAndOrdenDeCompraEstados(articulo, estadosEnProgreso);
-        return !detallesEnProgreso.isEmpty();
-    }
 }

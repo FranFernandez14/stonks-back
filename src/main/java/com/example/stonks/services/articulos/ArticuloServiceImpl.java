@@ -3,18 +3,22 @@ package com.example.stonks.services.articulos;
 import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.articulos.FamiliaArticulo;
 import com.example.stonks.entities.demanda.Demanda;
+import com.example.stonks.entities.orden_de_compra.EstadoODC;
+import com.example.stonks.entities.orden_de_compra.OrdenDeCompra;
 import com.example.stonks.repositories.articulos.ArticuloRepository;
 import com.example.stonks.repositories.BaseRepository;
 import com.example.stonks.services.BaseServiceImpl;
 import com.example.stonks.entities.articulos.ModeloInventario;
 import com.example.stonks.services.demanda.DemandaService;
 import com.example.stonks.services.orden_de_compra.DetalleOrdenDeCompraServiceImpl;
+import com.example.stonks.services.orden_de_compra.OrdenDeCompraService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.stonks.repositories.DemandaRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -29,7 +33,7 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     private DemandaService demandaService;
 
     @Autowired
-    private DetalleOrdenDeCompraServiceImpl detalleOrdenDeCompraService;
+    private OrdenDeCompraService ordenDeCompraService;
 
     public ArticuloServiceImpl(BaseRepository<Articulo, Long> baseRepository) {
         super(baseRepository);
@@ -158,19 +162,27 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
     @Transactional
     public boolean delete(Long id) throws Exception {
         try {
-
             if (!baseRepository.existsById(id)) {
                 throw new Exception("El artículo con ID " + id + " no existe.");
             }
 
             Articulo articulo = findById(id);
 
-            boolean enOrdenDetallesEnProgreso = detalleOrdenDeCompraService.verificarArticuloEnOrdenesDetallesEnProgreso(articulo);
+            // Verificar si hay órdenes de compra en estados que no permiten la eliminación
+            List<EstadoODC> estadosPermitidos = Arrays.asList(
+                    EstadoODC.SIN_CONFIRMAR,
+                    EstadoODC.CONFIRMADA,
+                    EstadoODC.ACEPTADA,
+                    EstadoODC.EN_CAMINO
+            );
 
-            if (enOrdenDetallesEnProgreso) {
-                throw new Exception("No se puede eliminar el artículo porque está en una orden de compra en progreso.");
+            List<OrdenDeCompra> ordenes = ordenDeCompraService.getOrdenesByArticuloAndEstados(articulo.getId(), estadosPermitidos);
+
+            if (!ordenes.isEmpty()) {
+                throw new Exception("No se puede eliminar el artículo porque está asociado a una orden de compra en progreso.");
             }
 
+            // Si no hay órdenes de compra que impidan la eliminación, proceder con la eliminación del artículo
             baseRepository.deleteById(id);
             return true;
 
@@ -179,15 +191,28 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         }
     }
 
+
     @Transactional
     public List<Articulo> listarProductosAReponer() {
         try {
+            // Define los estados de las órdenes de compra que se consideran pendientes
+            List<EstadoODC> estadosPendientes = Arrays.asList(
+                    EstadoODC.SIN_CONFIRMAR,
+                    EstadoODC.CONFIRMADA,
+                    EstadoODC.ACEPTADA,
+                    EstadoODC.EN_CAMINO
+            );
+
             // Filtra los artículos que cumplen con los criterios
             List<Articulo> productosAReponer = articuloRepository.findAll().stream()
                     .filter(articulo -> articulo.getStockActual() <= articulo.getPuntoPedido())
                     .filter(articulo -> {
                         try {
-                            return !detalleOrdenDeCompraService.verificarArticuloEnOrdenesDetallesEnProgreso(articulo);
+                            // Obtener órdenes de compra asociadas al artículo en estados pendientes
+                            List<OrdenDeCompra> ordenesPendientes = ordenDeCompraService.getOrdenesByArticuloAndEstados(articulo.getId(), estadosPendientes);
+
+                            // Retorna true si no hay órdenes pendientes, es decir, el artículo no está en una orden pendiente
+                            return ordenesPendientes.isEmpty();
                         } catch (Exception e) {
                             e.printStackTrace();
                             return false; // Si hay un error en la verificación, considera que está en progreso
@@ -200,7 +225,6 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
             e.printStackTrace();
             return new ArrayList<>(); // Devuelve una lista vacía en caso de error
         }
-
     }
 
     @Transactional
