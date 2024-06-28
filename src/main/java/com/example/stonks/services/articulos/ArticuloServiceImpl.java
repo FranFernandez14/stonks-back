@@ -243,5 +243,9 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         }
     }
 
+    public List<Articulo> findArticulosByModeloInventario (ModeloInventario modeloInventario){
+        return articuloRepository.findArticulosByModeloInventario(modeloInventario);
+    }
+
 }
 

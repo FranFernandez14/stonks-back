@@ -24,6 +24,7 @@ public class FamiliaArticulo extends Base {
     private Date fechaBaja;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "modelo_inventario", nullable = false)
     private ModeloInventario modeloInventario;
 
 }

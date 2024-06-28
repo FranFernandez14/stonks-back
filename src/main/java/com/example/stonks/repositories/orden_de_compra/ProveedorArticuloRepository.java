@@ -13,7 +13,7 @@ import java.util.*;
 @Repository
 public interface ProveedorArticuloRepository extends BaseRepository<ProveedorArticulo, Long> {
 
-    @Query(value = "SELECT pa FROM ProveedorArticulo as pa WHERE pa.proveedor_id = :id_proveedor AND pa.articulo_id = :id_articulo;", nativeQuery = true)
+    @Query(value = "SELECT * FROM proveedor_articulo as pa WHERE pa.id_proveedor = :id_proveedor AND pa.articulo_id = :id_articulo;", nativeQuery = true)
     ProveedorArticulo findProveedorArticuloByProveedorAndArticulo(@Param(value = "id_proveedor") Long id_proveedor, @Param(value = "id_articulo") Long id_articulo);
 
     @Query("SELECT new com.example.stonks.dtos.orden_de_compra.ProveedorArticuloDTO(p.id, p.nombre, pa.precio) " +

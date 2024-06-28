@@ -35,12 +35,15 @@ public class Articulo extends Base {
     private double precioVenta;
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
-    @Column(name = "cp")
-    private int cp;
     @Column(name = "ca")
     private int ca;
     @Column(name = "k")
     private double k;
+
+    @Column (name = "ultima_fecha_pedido" , nullable = true)
+    private Date ultimaFechaPedido;
+    @Column (name = "intervalo_pedido", nullable = true)
+    private Integer intervaloPedido;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_familia_articulo")
