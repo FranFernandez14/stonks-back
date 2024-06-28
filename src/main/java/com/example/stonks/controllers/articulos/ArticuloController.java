@@ -2,6 +2,7 @@ package com.example.stonks.controllers.articulos;
 
 import com.example.stonks.controllers.BaseControllerImpl;
 import com.example.stonks.entities.articulos.Articulo;
+import com.example.stonks.entities.articulos.ModeloInventario;
 import com.example.stonks.services.articulos.ArticuloServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,7 +19,13 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
 
     @Autowired
     private ArticuloServiceImpl articuloService;
-/*
+
+    @GetMapping("/loteFijo")
+    public List<Articulo> getArticulosLoteFijo(){
+        return articuloService.findArticulosByModeloInventario(ModeloInventario.Lote_Fijo);
+    }
+
+    /*
     @PostMapping("/{idArticulo}/calcularCGI")
     public ResponseEntity<?> calcularCGI(@PathVariable Long idArticulo, @RequestParam Long idDemanda) {
         try {
