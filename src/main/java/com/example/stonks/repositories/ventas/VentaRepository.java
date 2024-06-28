@@ -1,5 +1,6 @@
 package com.example.stonks.repositories.ventas;
 
+import com.example.stonks.entities.articulos.Articulo;
 import com.example.stonks.entities.demanda.Demanda;
 import com.example.stonks.entities.ventas.Venta;
 import com.example.stonks.repositories.BaseRepository;
@@ -13,10 +14,10 @@ import java.util.Optional;
 
 @Repository
 public interface VentaRepository extends BaseRepository<Venta, Long> {
-    @Query(value = "SELECT d.* FROM Demanda as d WHERE"
-    +" d.mes = month(CURDATE()) AND d.año = year(CURDATE())"
-    +" AND d.id_articulo = :idArticulo;", nativeQuery = true)
-    Optional<Demanda> getDemandaMesAñoActual (@Param(value = "idArticulo") Long idArticulo);
+    @Query("SELECT d FROM Demanda d WHERE "
+            + "d.mes = MONTH(CURRENT_DATE) AND d.año = YEAR(CURRENT_DATE) "
+            + "AND d.articulo = :idArticulo")
+    Optional<Demanda> getDemandaMesAñoActual (@Param(value = "idArticulo")Articulo idArticulo);
 
 
 }

@@ -21,11 +21,11 @@ public class Venta extends Base {
     @Column(name = "nro_venta")
     private int nroVenta;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_venta")
     private List<LineaVenta> lineasVenta = new ArrayList<>();
 
