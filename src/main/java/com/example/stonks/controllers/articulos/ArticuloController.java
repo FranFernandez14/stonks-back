@@ -25,7 +25,7 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
         return articuloService.findArticulosByModeloInventario(ModeloInventario.Lote_Fijo);
     }
 
-    /*
+
     @PostMapping("/{idArticulo}/calcularCGI")
     public ResponseEntity<?> calcularCGI(@PathVariable Long idArticulo, @RequestParam Long idDemanda) {
         try {
@@ -67,7 +67,7 @@ public class ArticuloController extends BaseControllerImpl<Articulo, ArticuloSer
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Error al calcular el Punto de Pedido.");
         }
     }
-*/
+
     @PostMapping("/{id}/calcular-stock-seguridad")
     public ResponseEntity<?> calcularStockSeguridad(@PathVariable Long id, @RequestParam double z, @RequestParam double desviacion) {
         try {

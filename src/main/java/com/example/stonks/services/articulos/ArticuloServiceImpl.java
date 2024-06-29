@@ -10,12 +10,10 @@ import com.example.stonks.repositories.BaseRepository;
 import com.example.stonks.services.BaseServiceImpl;
 import com.example.stonks.entities.articulos.ModeloInventario;
 import com.example.stonks.services.demanda.DemandaService;
-import com.example.stonks.services.orden_de_compra.DetalleOrdenDeCompraServiceImpl;
 import com.example.stonks.services.orden_de_compra.OrdenDeCompraService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.stonks.repositories.DemandaRepository;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,22 +37,19 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
         super(baseRepository);
     }
 
-    /*
-    @Transactional
+
     public Optional<Double> calcularCGI(Long idArticulo, Long idDemanda) {
         try {
-            Articulo articulo = findById(idArticulo);
+            Articulo articulo = articuloRepository.getReferenceById(idArticulo);
 
             // Selecciona la demanda específica basada en nroDemanda
-            Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getId() == idDemanda)
-                    .findFirst();
+            Demanda demandaSeleccionada = demandaService.findById(idDemanda);
 
-            if (demandaSeleccionada.isPresent()) {
-                float cantidad = demandaSeleccionada.get().getCantidad();
+
+                float cantidad = demandaSeleccionada.getCantidad();
                 double precioVenta = articulo.getPrecioVenta();
                 double ca = articulo.getCa();
-                double cp = articulo.getCp();
+                double cp = articulo.getPredeterminado().getCostoEnvio();
                 double loteOptimo = articulo.getLoteOptimo();
 
                 // Calcula el CGI utilizando la fórmula proporcionada
@@ -63,9 +58,9 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
                         + (cp * (cantidad / loteOptimo));
 
                 return Optional.of(cgi);
-            } else {
-                return Optional.empty();
-            }
+
+
+
         } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
@@ -74,25 +69,23 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
 
     public Optional<Integer> calcularLoteOptimo(Long idArticulo, Long idDemanda) {
         try {
-            Articulo articulo = findById(idArticulo);
+            Articulo articulo = articuloRepository.getReferenceById(idArticulo);
 
             // Selecciona la demanda específica basada en nroDemanda
-            Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getId() == idDemanda)
-                    .findFirst();
+            Demanda demandaSeleccionada = demandaService.findById(idDemanda);
 
-            if (demandaSeleccionada.isPresent()) {
-                float cantidadDemanda = demandaSeleccionada.get().getCantidad();
+
+                float cantidadDemanda = demandaSeleccionada.getCantidad();
 
                 FamiliaArticulo familiaArticulo = articulo.getFamiliaArticulo();
                 double loteOptimo;
 
                 if (familiaArticulo.getModeloInventario() == ModeloInventario.Lote_Fijo) {
-                    loteOptimo = Math.sqrt((2 * cantidadDemanda * articulo.getCp()) / articulo.getCa());
+                    loteOptimo = Math.sqrt((2 * cantidadDemanda * articulo.getPredeterminado().getCostoEnvio()) / articulo.getCa());
 
                 } else if (familiaArticulo.getModeloInventario() == ModeloInventario.Intervalo_Fijo) {
                     double k = articulo.getK();
-                    loteOptimo = Math.sqrt((2 * cantidadDemanda * articulo.getCp() / articulo.getCa()) * (1 / (1 - cantidadDemanda / k)));
+                    loteOptimo = Math.sqrt((2 * cantidadDemanda * articulo.getPredeterminado().getCostoEnvio() / articulo.getCa()) * (1 / (1 - cantidadDemanda / k)));
                 } else {
                     throw new IllegalArgumentException("Modelo de inventario no soportado");
                 }
@@ -101,26 +94,22 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
                 save(articulo);
 
                 return Optional.of((int) loteOptimo);
-            } else {
-                return Optional.empty();
-            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return Optional.empty();
         }
     }
 
-    @Transactional
+
     public Optional<Integer> calcularPuntoPedido(Long idArticulo, Long idDemanda) {
         try {
-            Articulo articulo = findById(idArticulo);
+            Articulo articulo = articuloRepository.getReferenceById(idArticulo);
             // Selecciona la demanda específica basada en nroDemanda
-            Optional<Demanda> demandaSeleccionada = articulo.getDemandas().stream()
-                    .filter(d -> d.getId() == idDemanda)
-                    .findFirst();
+            Demanda demandaSeleccionada = demandaService.findById(idDemanda);
 
-            if (demandaSeleccionada.isPresent() && articulo.getPredeterminado() != null) {
-                float cantidadDemanda = demandaSeleccionada.get().getCantidad();
+            if (articulo.getPredeterminado() != null) {
+                float cantidadDemanda = demandaSeleccionada.getCantidad();
                 int diasDemoraEntrega = articulo.getPredeterminado().getDiasDemoraEntrega();
                 float puntoPedido = cantidadDemanda * diasDemoraEntrega;
 
@@ -136,11 +125,11 @@ public class ArticuloServiceImpl extends BaseServiceImpl<Articulo,Long> implemen
             return Optional.empty();
         }
     }
-*/
+
     @Transactional
     public Optional<Integer> calcularStockSeguridad(Long idArticulo, double z, double desviacion) {
         try {
-            Articulo articulo = findById(idArticulo);
+            Articulo articulo = articuloRepository.getReferenceById(idArticulo);
 
             if (articulo.getPredeterminado() != null) {
                 int diasDemoraEntrega = articulo.getPredeterminado().getDiasDemoraEntrega();
