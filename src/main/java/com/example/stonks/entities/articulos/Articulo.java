@@ -36,9 +36,9 @@ public class Articulo extends Base {
     @Column(name = "inventarioMaximo")
     private int inventarioMaximo;
     @Column(name = "ca")
-    private int ca;
+    private Integer ca;
     @Column(name = "k")
-    private double k;
+    private Integer k;
 
     @Column (name = "ultima_fecha_pedido" , nullable = true)
     private Date ultimaFechaPedido;
