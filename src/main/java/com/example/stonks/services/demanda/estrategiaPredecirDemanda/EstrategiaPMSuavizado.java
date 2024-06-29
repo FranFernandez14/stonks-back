@@ -51,7 +51,12 @@ public class EstrategiaPMSuavizado implements EstrategiaPredecirDemanda{
                     mesBase,
                     añoBase);
 
-            if (prediccionBase.isEmpty()) throw new Exception("No se encuentran predicciones disponibles");
+            if (prediccionBase.isEmpty()) {
+                return DTOListaPrediccion.builder()
+                        .sePredijo(false)
+                        .estrategia("ESTRATEGIA_SUAVIZACION")
+                        .build();
+            }
 
             //Obtenemos las demandas historicas
             ArrayList<Demanda> listaDemandasCalculo = this.prediccionRepository.getDemandasAnteriores(
