@@ -49,7 +49,8 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
         try{
 
             for (LineaVenta lineaVenta : v.getLineasVenta()) { //por cada linea de venta
-                Articulo articulo = lineaVenta.getArticulo();   //obtener el articulo, se podría hacer desde el ventaRepository
+                Articulo articulo = lineaVenta.getArticulo();
+                System.out.println(articulo.getStockActual());//obtener el articulo, se podría hacer desde el ventaRepository
                 //checkear si hay stock
                 if (articulo.getStockActual() < lineaVenta.getCantidad()){
                     throw new Exception("El artículo "+articulo.getNombre()+" no posee suficiente stock como para realizar la venta");
@@ -57,26 +58,40 @@ public class VentaServiceImpl extends BaseServiceImpl<Venta, Long> implements Ve
 
                 //checkear si ya hay demanda para año-mes actual para ese articulo
                 Long idArticulo = articulo.getId();
-                Optional<Demanda> demandaMesAñoActual = ventaRepository.getDemandaMesAñoActual(idArticulo);
+
+                articulo.setStockActual(articulo.getStockActual() - lineaVenta.getCantidad());
+
+                articuloService.save(articulo);
+
+                Optional<Demanda> demandaMesAñoActual = ventaRepository.getDemandaMesAñoActual(articulo);
+
+
 
                 if (demandaMesAñoActual.isEmpty()) {
-                    Demanda demanda = Demanda.builder()
-                            .año(Calendar.getInstance().get(Calendar.YEAR))
-                            .mes(Calendar.getInstance().get(Calendar.MONTH))
-                            .articulo(articulo)
-                            .cantidad(lineaVenta.getCantidad())
-                            .build();
 
+                    Demanda demanda = new Demanda();
+
+                    demanda.setArticulo(articulo);
+                    demanda.setAño(Calendar.getInstance().get(Calendar.YEAR));
+                    demanda.setMes(Calendar.getInstance().get(Calendar.MONTH)+1);
+                    demanda.setCantidad(lineaVenta.getCantidad());
+
+
+                    System.out.println(demanda.getAño());
+                    System.out.println(demanda.getMes());
                     demandaService.save(demanda);
                 } else {
                     Demanda demanda = demandaMesAñoActual.get();
-                    demanda.setCantidad(demanda.getCantidad() + lineaVenta.getCantidad());
-                    demandaService.save(demanda);
+                    float cant = demanda.getCantidad();
+
+                    float nuevaCant = cant + lineaVenta.getCantidad();
+
+                    demanda.setCantidad(nuevaCant);
+
+                    Demanda d = demandaService.update(demanda.getId(),demanda);
                 }
 
                 //generar orden de compra si el stock baja por debajo del punto de pedido
-                articulo.setStockActual(articulo.getStockActual() - lineaVenta.getCantidad());
-                articuloService.save(articulo);
 
                 if (articulo.getFamiliaArticulo().getModeloInventario().equals(ModeloInventario.Lote_Fijo)) {
                     if (articulo.getPuntoPedido() >= articulo.getStockActual()) {

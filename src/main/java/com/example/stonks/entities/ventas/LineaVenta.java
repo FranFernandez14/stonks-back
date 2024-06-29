@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LineaVenta extends Base {
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 
